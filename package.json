@@ -5,6 +5,7 @@
   "scripts": {},
   "private": true,
   "devDependencies": {
+    "@jscutlery/semver": "^2.27.0",
     "@nrwl/cli": "14.7.8",
     "@nrwl/eslint-plugin-nx": "14.7.8",
     "@nrwl/jest": "14.7.8",
@@ -31,6 +32,7 @@
     "packages/**"
   ],
   "dependencies": {
+    "jspsych": "^7.3.0",
     "tslib": "^2.3.0"
   }
 }
