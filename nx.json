@@ -1,7 +1,7 @@
 {
   "extends": "nx/presets/npm.json",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "tsetplsignroe",
+  "npmScope": "plugins",
   "affected": {
     "defaultBase": "main"
   },
@@ -9,14 +9,17 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "MWUyOWNhMGYtYzc0Yy00MjA2LTk0N2MtY2I3ODMxYzQ3MTY1fHJlYWQtd3JpdGU="
       }
+    }
+  },
+  "targetDefaults": {
+    "lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+    },
+    "test": {
+      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
     }
   }
 }
