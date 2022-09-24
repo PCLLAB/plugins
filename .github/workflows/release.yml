@@ -15,14 +15,25 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+          persist-credentials: false
 
       - name: Setup Node.js 16.x
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
 
-      - name: Install Dependencies
-        run: yarn
+      - name: Cache node_modules
+        id: node-modules-cache
+        uses: actions/cache@v2
+        with:
+            path: '**/node_modules'
+            key: node-modules-cache-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets

@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "version-packages": "changeset version",
-    "release": "nx build && changeset publish"
+    "version": "changeset version",
+    "release": "nx run-many --target=build && changeset publish"
   },
   "private": true,
   "devDependencies": {
