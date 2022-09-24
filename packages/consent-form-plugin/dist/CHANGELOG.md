@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+### Patch Changes
+
+- 8dbbed3: include dist instead of src
+
 ## 0.1.1
 
 ### Patch Changes
