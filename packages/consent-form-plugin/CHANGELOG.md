@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.6
+
+### Patch Changes
+
+- 71df1d5: Use tsc directly instead of nx executor to build
+
 ## 0.1.3
 
 ### Patch Changes
