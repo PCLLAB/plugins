@@ -27,28 +27,6 @@
         "jestConfig": "packages/consent-form-plugin/jest.config.ts",
         "passWithNoTests": true
       }
-    },
-    "version": {
-      "executor": "@jscutlery/semver:version",
-      "options": {
-        "baseBranch": "master",
-        "preset": "conventional",
-        "tagPrefix": "${projectName}@",
-        "postTargets": ["consent-form-plugin:npm", "consent-form-plugin:github"]
-      }
-    },
-    "github": {
-      "executor": "@jscutlery/semver:github",
-      "options": {
-        "tag": "${tag}",
-        "notes": "${notes}"
-      }
-    },
-    "npm": {
-      "executor": "ngx-deploy-npm:deploy",
-      "options": {
-        "access": "public"
-      }
     }
   },
   "tags": []
