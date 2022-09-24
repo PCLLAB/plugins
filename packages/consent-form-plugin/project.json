@@ -7,7 +7,7 @@
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/consent-form-plugin",
+        "outputPath": "packages/consent-form-plugin/dist",
         "main": "packages/consent-form-plugin/src/index.ts",
         "tsConfig": "packages/consent-form-plugin/tsconfig.lib.json",
         "assets": ["packages/consent-form-plugin/*.md"]
