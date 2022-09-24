@@ -1,6 +1,6 @@
 {
   "name": "@pcllab/consent-form-plugin",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "type": "commonjs",
   "files": [
     "dist"
