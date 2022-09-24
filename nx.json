@@ -27,5 +27,10 @@
     "test": {
       "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
     }
+  },
+  "pluginsConfig": {
+    "@nrwl/js": {
+      "analyzeSourceFiles": true
+    }
   }
 }

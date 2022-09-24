@@ -4,11 +4,15 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "nx:run-commands",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "command": "tsc --project packages/consent-form-plugin/tsconfig.lib.json",
-        "outputPath": "packages/consent-form-plugin/dist"
+        "outputPath": "dist/packages/consent-form-plugin",
+        "main": "packages/consent-form-plugin/src/index.ts",
+        "tsConfig": "packages/consent-form-plugin/tsconfig.lib.json",
+        "assets": ["packages/consent-form-plugin/*.md"],
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "lint": {

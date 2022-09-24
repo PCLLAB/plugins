@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "version": "changeset version",
-    "release": "nx run-many --target=build && changeset publish"
+    "release": "nx run-many --target=build && rm -rf packages && mv dist packages && changeset publish"
   },
   "private": true,
   "devDependencies": {
