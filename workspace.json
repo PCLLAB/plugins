@@ -3,8 +3,5 @@
   "version": 2,
   "projects": {
     "consent-form-plugin": "packages/consent-form-plugin"
-  },
-  "cli": {
-    "packageManager": "yarn"
   }
 }

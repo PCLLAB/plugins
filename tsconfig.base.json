@@ -15,7 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@plugins/asdfa/libraryname": ["packages/asdfa/libraryname/src/index.ts"],
       "@plugins/consent-form-plugin": [
         "packages/consent-form-plugin/src/index.ts"
       ]

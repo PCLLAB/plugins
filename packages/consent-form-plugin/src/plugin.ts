@@ -7,13 +7,15 @@ const info = {
     url: {
       type: ParameterType.STRING,
       pretty_name: 'URL',
-      default: 'consent.html',
+      default: 'https://jarvis.psych.purdue.edu/weblab/consent.html',
     },
   },
 };
 type Info = typeof info;
 
 export default class ConsentFormPlugin implements JsPsychPlugin<Info> {
+  static info = info;
+
   constructor(private jsPsych: JsPsych) {}
 
   async trial(

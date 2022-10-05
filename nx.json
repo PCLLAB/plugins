@@ -32,5 +32,8 @@
     "@nrwl/js": {
       "analyzeSourceFiles": true
     }
+  },
+  "cli": {
+    "packageManager": "yarn"
   }
 }
