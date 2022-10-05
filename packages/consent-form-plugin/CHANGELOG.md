@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.8
+
+### Patch Changes
+
+- bab9c73: update README and change default url
+
 ## 0.1.7
 
 ### Patch Changes
