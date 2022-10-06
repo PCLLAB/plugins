@@ -17,6 +17,9 @@
     "paths": {
       "@plugins/consent-form-plugin": [
         "packages/consent-form-plugin/src/index.ts"
+      ],
+      "@plugins/free-recall-plugin": [
+        "packages/free-recall-plugin/src/index.ts"
       ]
     }
   },

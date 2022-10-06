@@ -1,0 +1,3 @@
+import <%= kebabToPascal(name) %> from './plugin';
+
+export default <%= kebabToPascal(name) %>;

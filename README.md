@@ -40,19 +40,23 @@ Once the `main` branch on Github has been updated with the changesets, the actio
 
 Merging that PR will trigger an the `release.yml` workflow to release all packages with updated versions to npm.
 
-This project was generated using [Nx](https://nx.dev).
+At at the `release` script in `package.json` for details.
+
+## Nx
+
+This project was generated using [Nx](https://nx.dev). It's a tool to manage monorepos, and it has useful documentation to help understand the relevant commands.
+
+Dependencies are installed once in the root.
+
+The build process determines each package's dependencies and creates a `package.json` for release.
 
 ### Generate a library
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+We have a custom workspace generator called `new-plugin` under `tools/generators/new-plugin`.
 
-> You can also use any of the plugins above to generate libraries as well.
+Run `nx workspace-generator new-plugin plugin-name` to generate a library for a new jsPsych plugin.
 
 Libraries are shareable across libraries and applications. They can be imported from `@plugins/mylib`.
-
-### Code scaffolding
-
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
 
 ### Build
 

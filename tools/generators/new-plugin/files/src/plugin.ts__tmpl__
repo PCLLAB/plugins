@@ -1,0 +1,24 @@
+import { JsPsych, JsPsychPlugin, ParameterType, TrialType } from 'jspsych';
+
+const info = {
+  name: '<%= pluginName(name) %>',
+  parameters: {
+ 
+  },
+};
+
+type Info = typeof info;
+
+export default class <%= kebabToPascal(name) %> implements JsPsychPlugin<Info> {
+  static info = info;
+
+  constructor(private jsPsych: JsPsych) {}
+
+  async trial(
+    display_element: HTMLElement,
+    trial: TrialType<Info>,
+    on_load?: (() => void) | undefined
+  ) {
+    
+  }
+}
