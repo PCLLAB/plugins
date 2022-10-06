@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.9
+
+### Patch Changes
+
+- 9cf75b4: build and bundle commonjs and esm
+
 ## 0.1.8
 
 ### Patch Changes
