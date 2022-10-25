@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@plugins/components": ["packages/components/lib"],
       "@plugins/consent-form-plugin": [
         "packages/consent-form-plugin/src/index.ts"
       ],

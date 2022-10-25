@@ -11,15 +11,15 @@ npm i @pcllab/consent-form-plugin
 ## Use
 
 ```js
-import ConsentFormPlugin from '@pcllab/consent-form-plugin';
+import ConsentFormPlugin from "@pcllab/consent-form-plugin";
 
 // ...snip
 
 const trial = {
   type: ConsentFormPlugin,
-  url: 'anyurl.html',
+  url: "anyurl.html",
 };
-timeline.push();
+timeline.push(trial);
 
 // ...snip
 ```

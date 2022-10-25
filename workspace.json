@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "components": "packages/components",
     "consent-form-plugin": "packages/consent-form-plugin",
     "free-recall-plugin": "packages/free-recall-plugin"
   }

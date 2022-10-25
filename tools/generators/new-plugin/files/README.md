@@ -11,14 +11,14 @@ npm i @pcllab/<%= name %>
 ## Use
 
 ```js
-import <%= kebabToPascal(name) %> from '@pcllab/<%= name %>';
+import <%= kebabToPascal(name) %> from "@pcllab/<%= name %>";
 
 // ...snip
 
 const trial = {
   type: <%= kebabToPascal(name) %>,
 };
-timeline.push();
+timeline.push(trial);
 
 // ...snip
 ```

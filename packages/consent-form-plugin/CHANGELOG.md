@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- 9cf75b4: build and bundle commonjs and esm
+- 9cf75b4: build and bundle commonjs and esm EDIT: this didn't happen
 
 ## 0.1.8
 

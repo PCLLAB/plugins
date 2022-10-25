@@ -4,15 +4,17 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nrwl/rollup:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/consent-form-plugin",
         "main": "packages/consent-form-plugin/src/index.ts",
         "tsConfig": "packages/consent-form-plugin/tsconfig.lib.json",
-        "assets": ["packages/consent-form-plugin/*.md"],
+        "assets": [],
         "buildableProjectDepsInPackageJsonType": "dependencies",
-        "updateBuildableProjectDepsInPackageJson": true
+        "updateBuildableProjectDepsInPackageJson": true,
+        "project": "packages/consent-form-plugin/package.json",
+        "format": ["cjs", "esm"]
       }
     },
     "lint": {

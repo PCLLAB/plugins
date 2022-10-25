@@ -20,6 +20,7 @@
     "@nrwl/workspace": "14.7.8",
     "@types/jest": "28.1.1",
     "@types/node": "16.11.7",
+    "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "eslint": "~8.15.0",
@@ -37,6 +38,8 @@
   ],
   "dependencies": {
     "jspsych": "^7.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "tslib": "^2.3.0"
   }
 }
