@@ -7,8 +7,9 @@ import {
   readProjectConfiguration,
   updateProjectConfiguration,
 } from "@nrwl/devkit";
-import { libraryGenerator } from "@nrwl/js";
+import { libraryGenerator } from "@nrwl/react";
 
+import { Linter } from "@nrwl/linter";
 const kebabToPascal = (kebab: string) =>
   kebab
     .split("-")
@@ -19,19 +20,14 @@ const pluginName = (name: string) => "pcllab-" + name;
 
 export default async function (tree: Tree, schema: any) {
   await libraryGenerator(tree, {
-    // These are required to be specified
     name: schema.name,
     buildable: true,
-    config: "project",
-    bundler: "rollup",
-    // The implementation falls back to these values, but we shouldn't depend on that
-    linter: "eslint",
-    strict: true,
-    testEnvironment: "jsdom",
+    style: "css",
+    skipTsConfig: false,
+    skipFormat: false,
     unitTestRunner: "jest",
-    compiler: "tsc",
-    // nwrl/js uses npm scope to automatically determine this.
-    // importPath: `@pcllab/${schema.name}`,
+    /** @ts-ignore they use some stupid enum string type */
+    linter: "eslint",
   });
 
   const projectConfig = readProjectConfiguration(tree, schema.name);
@@ -48,7 +44,11 @@ export default async function (tree: Tree, schema: any) {
   projectConfig.targets!.build.options.project = `${libraryRoot}/package.json`;
   // bundled cjs for the browser without using type="module"
   // esm modules for the rest of us
-  projectConfig.targets!.build.options.format = ["cjs", "esm"];
+  projectConfig.targets!.build.options.format = ["esm"];
+  projectConfig.targets!.build.options.generateExportsField = true;
+  projectConfig.targets!.build.options.buildableProjectDepsInPackageJsonType =
+    "peerDependencies";
+  projectConfig.targets!.build.options.rollupConfig = ["rollup.config.js"];
 
   updateProjectConfiguration(tree, schema.name, projectConfig);
 

@@ -1,0 +1,5 @@
+{
+  "name": "@pcllab/<%=name%>",
+  "version": "0.0.1",
+  "unpkg": "./index.browser.min.js"
+}

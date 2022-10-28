@@ -35,5 +35,12 @@
   },
   "cli": {
     "packageManager": "yarn"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
+    }
   }
 }
