@@ -4,23 +4,34 @@ This is a plugin description.
 
 ## Install
 
+With NPM: (preferred)
+
 ```
 npm i @pcllab/<%= name %>
+```
+
+```js
+import <%= kebabToPascal(name) %> from "@pcllab/<%= name %>";
+```
+
+With CDN:
+
+```html
+<!-- experiment.html -->
+
+<!-- Plugins dependencies -->
+
+<!-- Plugin -->
+<script src="https://unpkg.com/@pcllab/<%= name %>"></script>
 ```
 
 ## Use
 
 ```js
-import <%= kebabToPascal(name) %> from "@pcllab/<%= name %>";
-
-// ...snip
-
 const trial = {
   type: <%= kebabToPascal(name) %>,
 };
 timeline.push(trial);
-
-// ...snip
 ```
 
 ## Parameters

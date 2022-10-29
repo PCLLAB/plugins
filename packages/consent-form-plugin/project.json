@@ -11,10 +11,12 @@
         "main": "packages/consent-form-plugin/src/index.ts",
         "tsConfig": "packages/consent-form-plugin/tsconfig.lib.json",
         "assets": [],
-        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "buildableProjectDepsInPackageJsonType": "peerDependencies",
         "updateBuildableProjectDepsInPackageJson": true,
         "project": "packages/consent-form-plugin/package.json",
-        "format": ["cjs", "esm"]
+        "format": ["cjs", "esm"],
+        "generateExportsField": true,
+        "external": ["jspsych"]
       }
     },
     "lint": {

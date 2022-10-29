@@ -11,10 +11,12 @@
         "main": "packages/free-recall-plugin/src/index.ts",
         "tsConfig": "packages/free-recall-plugin/tsconfig.lib.json",
         "assets": [],
-        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "buildableProjectDepsInPackageJsonType": "peerDependencies",
         "updateBuildableProjectDepsInPackageJson": true,
         "project": "packages/free-recall-plugin/package.json",
-        "format": ["cjs", "esm"]
+        "format": ["esm"],
+        "generateExportsField": true,
+        "rollupConfig": ["rollup.config.js"]
       }
     },
     "lint": {

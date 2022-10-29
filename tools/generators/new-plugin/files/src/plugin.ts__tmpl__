@@ -1,7 +1,7 @@
 import { JsPsych, JsPsychPlugin, ParameterType, TrialType } from 'jspsych';
 
 const info = {
-  name: '<%= pluginName(name) %>',
+  name: 'pcllab-<%= pluginName(name) %>',
   parameters: {
  
   },

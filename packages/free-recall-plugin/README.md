@@ -4,23 +4,36 @@ This is a plugin description.
 
 ## Install
 
+With NPM: (Preferred)
+
 ```
 npm i @pcllab/free-recall-plugin
+```
+
+```js
+import FreeRecallPlugin from "@pcllab/free-recall-plugin";
+```
+
+With CDN:
+
+```html
+<!-- experiment.html -->
+
+<!-- Plugins dependencies -->
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+<!-- Plugin -->
+<script src="https://unpkg.com/@pcllab/free-recall-plugin"></script>
 ```
 
 ## Use
 
 ```js
-import FreeRecallPlugin from "@pcllab/free-recall-plugin";
-
-// ...snip
-
 const trial = {
   type: FreeRecallPlugin,
 };
 timeline.push();
-
-// ...snip
 ```
 
 ## Parameters

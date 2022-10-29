@@ -9,7 +9,6 @@ import {
 } from "@nrwl/devkit";
 import { libraryGenerator } from "@nrwl/react";
 
-import { Linter } from "@nrwl/linter";
 const kebabToPascal = (kebab: string) =>
   kebab
     .split("-")

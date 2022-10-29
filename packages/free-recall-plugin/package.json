@@ -1,4 +1,5 @@
 {
   "name": "@pcllab/free-recall-plugin",
-  "version": "0.0.0"
+  "version": "0.0.0",
+  "unpkg": "./index.browser.min.js"
 }
