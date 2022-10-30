@@ -6,6 +6,26 @@ import * as React from "react";
 const info = {
   name: "pcllab-free-recall",
   parameters: {
+    /** Allow users to remove added words */
+    allow_delete: {
+      type: ParameterType.BOOL,
+      pretty_name: "Show delete",
+      default: false,
+    },
+    /** Label of the button to submit responses. */
+    button_label: {
+      type: ParameterType.STRING,
+      pretty_name: "Button label",
+      default: "Continue",
+    },
+    /**
+     * The HTML string to be displayed.
+     */
+    stimulus: {
+      type: ParameterType.HTML_STRING,
+      pretty_name: "Stimulus",
+      default: null,
+    },
     //   questions: {
     //     type: ParameterType.COMPLEX,
     //     array: true,
@@ -56,12 +76,7 @@ const info = {
     //     pretty_name: "Randomize Question Order",
     //     default: false,
     //   },
-    //   /** Label of the button to submit responses. */
-    //   button_label: {
-    //     type: ParameterType.STRING,
-    //     pretty_name: "Button label",
-    //     default: "Continue",
-    //   },
+
     //   /** Setting this to true will enable browser auto-complete or auto-fill for the form. */
     //   autocomplete: {
     //     type: ParameterType.BOOL,
@@ -73,10 +88,12 @@ const info = {
 
 export type Info = typeof info;
 
-// don't allow duplicates
-// delete button or not
+export interface TrialData {
+  response: string;
+  rt_first_keypress: number;
+  rt_last_keypress: number;
+}
 
-// TODO this isn't free recall dumbo
 class FreeRecallPlugin implements JsPsychPlugin<Info> {
   static info = info;
 
@@ -85,12 +102,19 @@ class FreeRecallPlugin implements JsPsychPlugin<Info> {
   trial(display_element: HTMLElement, trial: TrialType<Info>) {
     const root = ReactDOM.createRoot(display_element);
 
-    const finishTrial = (trialData) => {
+    /** Trial data is saved for every recalled word, instead of after one trial */
+    const finishTrial = () => {
       root.unmount();
-      this.jsPsych.finishTrial(trialData);
+      this.jsPsych.finishTrial();
     };
 
-    root.render(React.createElement(FreeRecall, { finishTrial, trial }));
+    root.render(
+      React.createElement(FreeRecall, {
+        finishTrial,
+        trial,
+        jsPsych: this.jsPsych,
+      })
+    );
   }
 }
 
