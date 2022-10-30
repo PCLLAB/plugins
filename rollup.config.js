@@ -11,6 +11,11 @@ const { terser } = require("rollup-plugin-terser");
 module.exports = (config) => {
   const nxConfig = nrwlConfig(config);
   const esmOutput = nxConfig.output;
+  esmOutput.globals = {
+    jspsych: "jsPsychModule",
+    "react-dom/client": "ReactDOM",
+    react: "React",
+  };
 
   nxConfig.output = [
     esmOutput,
