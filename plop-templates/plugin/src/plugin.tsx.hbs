@@ -1,0 +1,13 @@
+import { JsPsych, TrialType } from "jspsych";
+import React from "react";
+import type { Info, TrialData } from ".";
+
+interface Props {
+  trial: TrialType<Info>;
+  finishTrial: () => void;
+  jsPsych: JsPsych;
+}
+
+export const {{pascalCase name}} = ({ trial, finishTrial, jsPsych }: Props) => {
+  return <></>;
+};

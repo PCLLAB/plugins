@@ -1,0 +1,21 @@
+{
+  "name": "lop-e2-copy",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
+  },
+  "dependencies": {
+    "@jspsych/plugin-fullscreen": "^1.1.2",
+    "@jspsych/plugin-html-button-response": "^1.1.2",
+    "@pcllab/plugin-free-recall": "workspace:^0.0.1",
+    "jspsych": "^7.3.1"
+  }
+}

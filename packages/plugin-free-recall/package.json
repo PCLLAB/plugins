@@ -1,0 +1,39 @@
+{
+  "name": "@pcllab/plugin-free-recall",
+  "version": "0.0.1",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "unpkg": "dist/index.global.js",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts && tsup src/index.ts --format iife --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pcllab/plugins.git",
+    "directory": "packages/plugin-free-recall"
+  },
+  "bugs": {
+    "url": "https://github.com/@pcllab/plugins/issues"
+  },
+  "homepage": "https://github.com/@pcllab/plugins/tree/main/packages/plugin-free-recall#readme",
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "tsconfig": "workspace:*",
+    "tsup": "^6.5.0"
+  },
+  "peerDependencies": {
+    "jspsych": "^7.3.1",
+    "react": "^18.2.0",
+    "react-dom": "18.2.0"
+  }
+}
