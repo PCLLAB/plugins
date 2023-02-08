@@ -14,7 +14,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts && tsup src/index.ts --format iife --minify"
+    "buildPackage": "tsup src/index.ts --format esm,cjs --dts",
+    "buildBrowser": "tsup src/index.ts --format iife --minify",
+    "build": "pnpm buildPackage && pnpm buildBrowser",
+    "dev": "pnpm buildPackage --watch"
   },
   "repository": {
     "type": "git",

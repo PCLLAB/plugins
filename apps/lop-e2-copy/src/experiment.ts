@@ -14,8 +14,11 @@ const fullscreenTrial = {
   fullscreen_mode: true,
 };
 
-const instructions = {
-  type: htmlButtonResponse,
+const recall = {
+  type: freeRecall,
+  allow_delete: true,
+  button_label: "hi button label",
+  stimulus: "<b>stim</b>",
 };
 
-jsPsych.run([fullscreenTrial, instructions]);
+jsPsych.run([recall]);
