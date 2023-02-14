@@ -1,0 +1,46 @@
+{
+    "welcome": {
+        "title": "",
+        "text": "<h1> <center> Please wait for the experimenter. <br><br> If you have not done so already, please silence your cell phone and put away all personal belongs. <br><br> Please DO NOT press 'Continue' until the experimenter tells you to begin."
+    },
+    "initial-study": {
+        "title": "Study Instructions",
+        "text": "<font size = '5'> <p> In today's experiment, you will be asked to study and remember some pictures. There will be four rounds of pictures. Within each round, you will be presented with two lists of pictures.  After studying each list, there will be a 30 second math task, where you will see some arithmetic problems and be asked to type the answer into a box. </p> <br> <p> After studying two lists of pictures, the pictures will be presented to you again. Sometimes you will be asked to restudy these pictures. Other times, you will be asked to recall and select whether the picture came from list 1 or list 2 when you studied it for the first time. Please try to respond fast and accurately.</p> <br>  <p> If you have any questions about the instruction, please raise your hand and the experimenter will come to you. If not, you may begin.  </p>"
+    },
+    "new-study": {
+        "title": "",
+        "text": "<font size = '5'> <p> Now, you will study two new lists of pictures. </p>"
+    },
+    "old-study": {
+        "title": "",
+        "text": "<font size = '5'> <p> Next, the pictures that you just studied will be presented to you again. </p>"
+    },
+    "studylookup": {
+        "title": "",
+        "text": "<font size = '5'> <p> Please raise your hand to indicate that you have finished this phase of the experiment and wait quietly for instructions from the experimenter.</p>"
+    },
+    "test": {
+        "title": "Test Instructions",
+        "text": "<font size = '5'> <p> Now, we will test your memory for the pictures that you saw earlier. You should enter the name of each item that you remember seeing. If possible, just enter one simple word in singular form. For example, if you had seen and remembered this picture below, you should enter “train” into the box, as opposed to “a train” , “a red train” or “locomotive”. <br> <br> <p> <center> <img src='Materials/Pictures/Practice/train.jpg' width='500px'> </center> </p> <br> <p> After you enter the name of a picture into the box on the left, click the enter key on your keyboard, and the item you entered will be added to a list on the right. You have 5 minutes to recall as many pictures as you can. You should try your best to keep recalling until the end of that time. </p> <br> <p>Click 'Begin' when you are ready to start the test.</p>"
+    },
+    "pacman": {
+        "title": "Pacman Game",
+        "text": "<h3>You will now play Pacman for 5 minutes. You can control Pac-Man using the arrow keys on your keyboard. <br><br> Click ‘Continue’ when you are ready to begin the game.</h3>"
+    },
+    "pacmanlookup": {
+        "title": "",
+        "text": "<font size = '5'> <p> Please raise your hand to indicate that you have finished the game and wait quietly for instructions from the experimenter.</p>"
+    },
+    "demographics": {
+        "title": "Demographics Instructions",
+        "text": "<font size = '5'> <p> The experiment is almost over. <br><br> Now, we would like to collect some demographic information about you. You do not have to answer any questions you are not comfortable with. The information you provide will not be used to identify you in any way. <br> <br> If you do not wish to answer one of the questions, simply select 'No' or type a 0 in the corresponding text-box. <br> <br> <p>Click 'Next' when you are ready to continue.</p>"
+    },
+    "end": {
+        "title": "Thank you for participating!",
+        "text": "<font size = '5'> <p> You have completed the experiment. <b> Please wait quietly while all other participants finish the experiment. </b> You will be dismissed by the experimenter when everyone has finished. <br><br> Because this is an ongoing study and many other students will participate, we ask that you not discuss specific details about the study with other students. <br><br> Click 'Continue' to view the debriefing page."
+    },
+    "debrief": {
+        "title": "Debriefing: #950 Memory Experiment",
+        "text": "<p> <font size =4> <b> What is the general aim of this research? </b> </p> <p> The experiment you participated in today is part of a larger study investigating strategies that enhance memory.This specific experiment aimed to examine whether or not different types of processing have an effect on memory. </p> <p> <b> Is this correlational or experimental research? </b> </p> <p> The study you participated in represents experimental research. The independent variable we manipulated was the different judgments you made about the pictures (e.g. questions about the physical features of a picture vs. questions about the semantic meaning of a picture), and the dependent variable we are interested in is your performance on the free recall task. We predict that pictures that come after a question about their physical features are more likely to be recalled. </p> <p> <b> What topic in introductory psychology does this research illustrate? </b> </p> <p> The current research falls within the general area of human learning and memory. For an overview of research on human memory, see Chapter 8 in Nairne’s <i>Psychology: The Adaptive Mind (4th Edition)</i>, Chapter 9 in Meyers’ <i>Psychology (8th Edition)</i>, or Chapter 9 in Gray’s <i>Psychology (5th Edition)</i>. Another excellent book covering current research on human memory is <i>The Seven Sins of Memory</i>, by Dan Schacter. </p> <p> <b> Where can I learn more about this type of research? </b> </p> <p> If you are interested in learning more about this type of research, here are two relevant references: <p> Craik, F. I., & Lockhart, R. S. (1972). Levels of processing: A framework for memory research. <i>Journal of verbal learning and verbal behavior</i>, 11(6), 671-684.</p> <p> Craik, F. I., & Tulving, E. (1975). Depth of processing and the retention of words in episodic memory. <i>Journal of experimental Psychology: general</i>, 104(3), 268.</p><p> <b> Which faculty member is supervising this research and how can I contact her/him? </b> </p> <p> Dr. Jeffrey Karpicke, a professor in cognitive psychology, is supervising this research. You may reach him at 494-0273, via email at karpicke@purdue.edu, or in room PRCE 389. </p> <p> <b> How long has the investigator been studying this specific topic and how does this experiment fit into the investigator's program of research? </b> </p> <p> Dr. Karpicke began investigating human learning and memory over 15 years ago. The current experiments are designed to examine other ways that basic research on learning and memory can be applied to enhance educational practice. </p> <p> <i> A lot of research in psychology depends on the participation of individuals like you. We are very grateful for your help. Thank you very much for participating. </i> </p> <p> <font size = 6> <b> Please do not close this browser. Please leave the screen as it is and raise your hand to indicate that you have finished reading. </b> </p> "
+    }
+}
