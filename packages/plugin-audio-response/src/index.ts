@@ -29,6 +29,7 @@ const info = {
       type: ParameterType.COMPLEX,
       pretty_name: "Button",
       default: undefined,
+      array: true,
       nested: {
         /** Array containing the label(s) for the button(s). */
         choices: {
@@ -106,9 +107,13 @@ class AudioResponsePlugin implements JsPsychPlugin<Info> {
   constructor(private jsPsych: JsPsych) {}
 
   trial(display_element: HTMLElement, trial: TrialType<Info>) {
-    if (trial.show_repeat_button && trial.response_ends_trial) {
+    // stupid workaround b/c jspsych is poorly written
+    if (trial.button) trial.button = trial.button[0];
+    if (trial.keyboard) trial.keyboard = trial.keyboard[0];
+
+    if (trial.show_repeat_button && trial.trial_ends_after_audio) {
       console.error(
-        "pcllab-audio-response: cannot have show_repeat_button and response_ends_trial both set to true."
+        "pcllab-audio-response: cannot have show_repeat_button and trial_ends_after_audio both set to true."
       );
     }
 
@@ -156,11 +161,11 @@ class AudioResponsePlugin implements JsPsychPlugin<Info> {
     };
 
     const replayAudio = () => {
-      const audio = context.createBufferSource();
+      audio.stop();
+      audio = context.createBufferSource();
       audio.buffer = audioBuffer;
       audio.connect(context.destination);
       audio.start();
-      return audio.stop;
     };
 
     const getButtonHTMLStrings = () => {
@@ -177,11 +182,10 @@ class AudioResponsePlugin implements JsPsychPlugin<Info> {
       } else {
         buttons = Array(trial.button.choices.length).fill(trial.button.html);
       }
-      buttons.map((button, i) =>
+
+      return buttons.map((button, i) =>
         button.replace(/%choice%/g, trial.button.choices[i])
       );
-
-      return buttons;
     };
 
     root.render(
@@ -212,6 +216,8 @@ class AudioResponsePlugin implements JsPsychPlugin<Info> {
       if (trial.response_allowed_while_playing) {
         setupKeyboardListener();
         enableButtons();
+      } else {
+        disableButtons();
       }
 
       if (
@@ -287,10 +293,10 @@ class AudioResponsePlugin implements JsPsychPlugin<Info> {
         ".jspsych-audio-button-response-button"
       );
       btns.forEach((btn) => {
-        // const btnEl = btn.querySelector("button");
-        // if (btnEl) {
-        //   btnEl.disabled = false;
-        // }
+        const btnEl = btn.querySelector("button");
+        if (btnEl) {
+          btnEl.disabled = false;
+        }
         btn.addEventListener("click", onButtonClick);
       });
     }
