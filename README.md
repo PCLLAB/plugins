@@ -1,4 +1,10 @@
-# Turborepo starter
+# plugins
+
+## Scaffold a new plugin package
+
+```sh
+pnpm plop plugin
+```
 
 This is an official pnpm starter turborepo.
 

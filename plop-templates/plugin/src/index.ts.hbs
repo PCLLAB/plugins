@@ -4,7 +4,7 @@ import { {{pascalCase name}} } from "./plugin";
 import * as React from "react";
 
 const info = {
-  name: "{{kebabCase name}}-plugin",
+  name: "pcllab-{{kebabCase name}}",
   parameters: {
   },
 };
@@ -22,7 +22,6 @@ class {{pascalCase name}}Plugin implements JsPsychPlugin<Info> {
   trial(display_element: HTMLElement, trial: TrialType<Info>) {
     const root = ReactDOM.createRoot(display_element);
 
-    /** Trial data is saved for every recalled word, instead of after one trial */
     const finishTrial = () => {
       root.unmount();
       this.jsPsych.finishTrial();
