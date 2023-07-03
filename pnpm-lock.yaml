@@ -49,6 +49,7 @@ importers:
     specifiers:
       '@jspsych/plugin-fullscreen': ^1.1.2
       '@pcllab/plugin-audio-response': workspace:*
+      '@pcllab/plugin-free-recall': ^0.0.1
       autoprefixer: ^10.4.14
       jspsych: ^7.3.2
       postcss: ^8.4.23
@@ -58,6 +59,7 @@ importers:
     dependencies:
       '@jspsych/plugin-fullscreen': 1.1.2_jspsych@7.3.3
       '@pcllab/plugin-audio-response': link:../../packages/plugin-audio-response
+      '@pcllab/plugin-free-recall': link:../../packages/plugin-free-recall
       jspsych: 7.3.3
     devDependencies:
       autoprefixer: 10.4.14_postcss@8.4.24
@@ -116,7 +118,6 @@ importers:
 
   packages/plugin-audio-response:
     specifiers:
-      '@pcllab/plugin-audio-response': ^0.0.1
       '@types/react': ^18.0.27
       '@types/react-dom': ^18.0.10
       jspsych: ^7.3.1
@@ -125,7 +126,6 @@ importers:
       tsconfig: workspace:*
       tsup: ^6.5.0
     dependencies:
-      '@pcllab/plugin-audio-response': 'link:'
       jspsych: 7.3.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0

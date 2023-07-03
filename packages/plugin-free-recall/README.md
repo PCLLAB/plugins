@@ -1,10 +1,10 @@
 # free-recall-plugin
 
-This is a plugin description.
+This plugin allows free recall. A text input allows any number of non-repeated words to be added to a list.
 
 ## Install
 
-With NPM: (Preferred)
+With NPM:
 
 ```
 npm i @pcllab/plugin-free-recall
@@ -17,37 +17,7 @@ import freeRecall from "@pcllab/plugin-free-recall";
 With CDN:
 
 ```html
-<!-- experiment.html -->
-<head>
-  <!-- rest of head -->
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style type="text/tailwindcss">
-    @layer base {
-      input,
-      textarea {
-        @apply border rounded px-1;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <!-- rest of body -->
-
-  <!-- Plugins dependencies -->
-  <script
-    crossorigin
-    src="https://unpkg.com/react@18/umd/react.production.min.js"
-  ></script>
-  <script
-    crossorigin
-    src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
-  ></script>
-
-  <!-- Plugin -->
-  <script src="https://unpkg.com/@pcllab/plugin-free-recall"></script>
-</body>
+<script src="https://unpkg.com/@pcllab/plugin-free-recall"></script>
 ```
 
 ## Use
@@ -73,8 +43,7 @@ timeline.push();
 
 In addition to the default data collected by all plugins, this plugin collects the following data for each _recalled word_.
 
-| Name              | Type   | Value                                                                                                                                                    |
-| ----------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| response          | string | A word added to the recall list                                                                                                                          |
-| rt_first_keypress | number | Time in ms between first keypress of current word and the last keypress of the previous word. The trial start time is used if there is no previous word. |
-| rt_last_keypress  | number | Time in ms between last keypress of current word and the last keypress of the previous word. The trial start time is used if there is no previous word.  |
+| Name     | Type   | Value                                                   |
+| -------- | ------ | ------------------------------------------------------- |
+| response | string | A word added to the recall list                         |
+| rt       | number | Time in ms between start of trial and submitting a word |

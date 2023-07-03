@@ -16,8 +16,9 @@
     "vite": "^4.3.3"
   },
   "dependencies": {
-    "@pcllab/plugin-audio-response": "workspace:*",
     "@jspsych/plugin-fullscreen": "^1.1.2",
+    "@pcllab/plugin-audio-response": "workspace:*",
+    "@pcllab/plugin-free-recall": "workspace:*",
     "jspsych": "^7.3.2"
   }
 }

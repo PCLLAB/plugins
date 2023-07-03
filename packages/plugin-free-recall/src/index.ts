@@ -1,7 +1,7 @@
 import { JsPsych, JsPsychPlugin, ParameterType, TrialType } from "jspsych";
+import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { FreeRecall } from "./FreeRecall";
-import * as React from "react";
 
 const info = {
   name: "pcllab-free-recall",
@@ -33,8 +33,7 @@ export type Info = typeof info;
 
 export interface TrialData {
   response: string;
-  rt_first_keypress: number;
-  rt_last_keypress: number;
+  rt: number;
 }
 
 class FreeRecallPlugin implements JsPsychPlugin<Info> {

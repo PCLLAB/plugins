@@ -3,16 +3,12 @@ import "./style.css";
 
 import { initJsPsych } from "jspsych";
 import audioResponse from "@pcllab/plugin-audio-response";
+import freeRecall from "@pcllab/plugin-free-recall";
 
 const jsPsych = initJsPsych({ on_finish: () => jsPsych.data.displayData() });
 
 const start = {
-  type: audioResponse,
-  prompt: "<div>click to trigger</div>",
-  stimulus: "./audio.m4a",
-  button: {
-    choices: ["next"],
-  },
+  type: freeRecall,
 };
 
 const trial = {
@@ -23,6 +19,7 @@ const trial = {
     choices: ["one", "two"],
   },
   keyboard: {},
+  response_allowed_while_playing: false,
   show_repeat_button: true,
 };
 

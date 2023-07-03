@@ -1,5 +1,5 @@
 import { JsPsych, TrialType } from "jspsych";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useMemo, useState } from "react";
 
 import type { Info, TrialData } from ".";
 
@@ -14,34 +14,26 @@ export const FreeRecall = ({ trial, finishTrial, jsPsych }: Props) => {
 
   const [word, setWord] = useState("");
 
-  const [prevLastKeypress, setPrevLastKeypress] = useState(performance.now());
-  const [firstKeypress, setFirstKeypress] = useState<number | null>(null);
+  const startTime = useMemo(() => performance.now(), []);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (firstKeypress == null) {
-      setFirstKeypress(performance.now());
-    }
     setWord(e.target.value.toLowerCase());
   };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    if (word === "" || words.includes(word) || firstKeypress == null) {
+    if (word === "" || words.includes(word)) {
       return;
     }
 
     setWords([...words, word]);
     setWord("");
 
-    const lastKeypress = performance.now();
     const data: TrialData = {
       response: word,
-      rt_last_keypress: lastKeypress - prevLastKeypress,
-      rt_first_keypress: firstKeypress - prevLastKeypress,
+      rt: performance.now() - startTime,
     };
-    setPrevLastKeypress(lastKeypress);
-    setFirstKeypress(null);
 
     jsPsych.data.write(data);
   };
