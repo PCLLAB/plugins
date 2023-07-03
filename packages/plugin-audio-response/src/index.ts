@@ -1,7 +1,7 @@
 import { JsPsych, JsPsychPlugin, ParameterType, TrialType } from "jspsych";
+import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { AudioResponse } from "./AudioResponse";
-import * as React from "react";
 
 const info = {
   name: "pcllab-audio-response",
@@ -29,7 +29,6 @@ const info = {
       type: ParameterType.COMPLEX,
       pretty_name: "Button",
       default: undefined,
-      array: true,
       nested: {
         /** Array containing the label(s) for the button(s). */
         choices: {
@@ -107,9 +106,34 @@ class AudioResponsePlugin implements JsPsychPlugin<Info> {
   constructor(private jsPsych: JsPsych) {}
 
   trial(display_element: HTMLElement, trial: TrialType<Info>) {
-    // stupid workaround b/c jspsych is poorly written
-    if (trial.button) trial.button = trial.button[0];
-    if (trial.keyboard) trial.keyboard = trial.keyboard[0];
+    // jsPsych doesn't apply defaults to nested objects
+    if (trial.button) {
+      Object.keys(info.parameters.button.nested).forEach((key) => {
+        if (trial.button[key] == null) {
+          // @ts-expect-error obviously key exists
+          trial.button[key] = info.parameters.button.nested[key].default;
+        }
+      });
+
+      if (Array.isArray(trial.button.html)) {
+        if (trial.button.html.length !== trial.button.choices.length) {
+          console.error(
+            "pcllab-audio-response plugin: The length of the button.html array does not equal the length of the button.choices array"
+          );
+        }
+      } else {
+        trial.button.html = Array(trial.button.choices.length).fill(
+          trial.button.html
+        );
+      }
+    }
+    // jsPsych doesn't apply defaults to nested objects
+    if (trial.keyboard) {
+      if (trial.keyboard.choices == null) {
+        trial.keyboard.choices =
+          info.parameters.keyboard.nested.choices.default;
+      }
+    }
 
     if (trial.show_repeat_button && trial.trial_ends_after_audio) {
       console.error(
@@ -171,17 +195,7 @@ class AudioResponsePlugin implements JsPsychPlugin<Info> {
     const getButtonHTMLStrings = () => {
       if (trial.button == null) return;
 
-      let buttons: string[];
-      if (Array.isArray(trial.button.html)) {
-        if (trial.button.html.length !== trial.button.choices.length) {
-          console.error(
-            "pcllab-audio-response plugin: The length of the button.html array does not equal the length of the button.choices array"
-          );
-        }
-        buttons = trial.button.html;
-      } else {
-        buttons = Array(trial.button.choices.length).fill(trial.button.html);
-      }
+      const buttons: string[] = trial.button.html;
 
       return buttons.map((button, i) =>
         button.replace(/%choice%/g, trial.button.choices[i])

@@ -4,7 +4,7 @@ This is a plugin description.
 
 ## Install
 
-With NPM: (Preferred)
+With NPM:
 
 ```
 npm i @pcllab/plugin-{{kebabCase name}}
@@ -16,38 +16,10 @@ import {{camelCase name}} from "@pcllab/plugin-{{kebabCase name}}";
 
 With CDN:
 
+Other dependencies (react, react-dom, tailwind) need to loaded separately.
+
 ```html
-<!-- experiment.html -->
-<head>
-  <!-- rest of head -->
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style type="text/tailwindcss">
-    @layer base {
-      input,
-      textarea {
-        @apply border rounded px-1;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <!-- rest of body -->
-
-  <!-- Plugins dependencies -->
-  <script
-    crossorigin
-    src="https://unpkg.com/react@18/umd/react.production.min.js"
-  ></script>
-  <script
-    crossorigin
-    src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
-  ></script>
-
-  <!-- Plugin -->
   <script src="https://unpkg.com/@pcllab/plugin-{{kebabCase name}}"></script>
-</body>
 ```
 
 ## Use
@@ -69,12 +41,8 @@ timeline.push();
 
 ## Data Generated
 
-**This plugin will output data multiple times.**
+In addition to the default data collected by all plugins, this plugin collects the following data.
 
-In addition to the default data collected by all plugins, this plugin collects the following data for each _recalled word_.
-
-| Name              | Type   | Value                                                                                                                                                    |
-| ----------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| response          | string | A word added to the recall list                                                                                                                          |
-| rt_first_keypress | number | Time in ms between first keypress of current word and the last keypress of the previous word. The trial start time is used if there is no previous word. |
-| rt_last_keypress  | number | Time in ms between last keypress of current word and the last keypress of the previous word. The trial start time is used if there is no previous word.  |
+| Name              | Type   | Value                                            |
+| ----------------- | ------ | ------------------------------------------------ |
+| response          | string | A word added to the recall list                  |

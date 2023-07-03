@@ -1,6 +1,5 @@
 import { JsPsych, TrialType } from "jspsych";
-import React from "react";
-import type { Info, TrialData } from ".";
+import type { Info } from ".";
 
 interface Props {
   trial: TrialType<Info>;
@@ -14,12 +13,7 @@ export const AudioResponse = ({
   trial,
   buttonHTMLStrings,
   replayAudio,
-  finishTrial,
-  jsPsych,
 }: Props) => {
-  const onContinue = () => {
-    finishTrial();
-  };
   return (
     <>
       {trial.prompt && (
@@ -44,7 +38,7 @@ export const AudioResponse = ({
                 display: "inline-block",
                 margin: `${trial.button.margin_vertical} ${trial.button.margin_horizontal}`,
               }}
-              data-choice={trial.button.choices[i]}
+              data-choice={i}
               dangerouslySetInnerHTML={{ __html: buttonHTML }}
             ></div>
           ))}
