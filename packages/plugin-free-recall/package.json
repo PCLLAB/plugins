@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/PCLLAB/plugins/tree/main/packages/plugin-free-recall#readme",
   "devDependencies": {
+    "@fal-works/esbuild-plugin-global-externals": "^2.1.2",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "tsconfig": "workspace:*",
