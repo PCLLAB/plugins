@@ -1,6 +1,6 @@
 {
   "name": "@pcllab/plugin-free-recall",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
@@ -21,13 +21,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pcllab/plugins.git",
+    "url": "git+https://github.com/PCLLAB/plugins.git",
     "directory": "packages/plugin-free-recall"
   },
   "bugs": {
-    "url": "https://github.com/@pcllab/plugins/issues"
+    "url": "https://github.com/PCLLAB/plugins/issues"
   },
-  "homepage": "https://github.com/@pcllab/plugins/tree/main/packages/plugin-free-recall#readme",
+  "homepage": "https://github.com/PCLLAB/plugins/tree/main/packages/plugin-free-recall#readme",
   "devDependencies": {
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
@@ -38,5 +38,8 @@
     "jspsych": "^7.3.1",
     "react": "^18.2.0",
     "react-dom": "18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

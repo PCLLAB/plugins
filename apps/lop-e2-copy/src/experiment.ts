@@ -1,13 +1,14 @@
+// @ts-nocheck jsPsych.randomization.shuffleNoRepeats type is wrong
 import "jspsych/css/jspsych.css";
 import "./style.css";
 
-import fullscreen from "@jspsych/plugin-fullscreen";
-import htmlButtonResponse from "@jspsych/plugin-html-button-response";
+// import fullscreen from "@jspsych/plugin-fullscreen";
+// import htmlButtonResponse from "@jspsych/plugin-html-button-response";
 import imageButtonResponse from "@jspsych/plugin-image-button-response";
 import instructionsPlugin from "@jspsych/plugin-instructions";
 import surveyTextPlugin from "@jspsych/plugin-survey-text";
-import surveyPlugin from "@jspsych/plugin-survey";
-import freeRecallPlugin from "@pcllab/plugin-free-recall";
+// import surveyPlugin from "@jspsych/plugin-survey";
+// import freeRecallPlugin from "@pcllab/plugin-free-recall";
 
 import instructions from "../Materials/instructions.json";
 import Order1 from "../Materials/Order1.json";
@@ -26,8 +27,8 @@ const jsPsych = initJsPsych({
   },
 });
 
-const subNum = jsPsych.data.getURLVariable("workerId");
-const order = jsPsych.data.getURLVariable("Version");
+// const subNum = jsPsych.data.getURLVariable("workerId");
+// const order = jsPsych.data.getURLVariable("Version");
 const condition = jsPsych.data.getURLVariable("condition");
 
 const studyList1 = jsPsych.randomization.shuffleNoRepeats(Order1.slice(0, 8));
@@ -61,24 +62,24 @@ const createLoopUntilTimeLimitTrial = (trial: any, time: number) => {
 
 const timeline = [];
 
-const fullscreenTrial = {
-  type: fullscreen,
-  fullscreen_mode: true,
-};
+// const fullscreenTrial = {
+//   type: fullscreen,
+//   fullscreen_mode: true,
+// };
 
-const startInstr = {
-  type: instructionsPlugin,
-  pages: [
-    instructions["welcome"].text,
-    instructions["initial-study"].text,
-    instructions["new-study"].text,
-    instructions["old-study"].text,
-  ],
-  allow_keys: false,
-  allow_backward: false,
-  button_label_next: "Continue",
-  show_clickable_nav: true,
-};
+// const startInstr = {
+//   type: instructionsPlugin,
+//   pages: [
+//     instructions["welcome"].text,
+//     instructions["initial-study"].text,
+//     instructions["new-study"].text,
+//     instructions["old-study"].text,
+//   ],
+//   allow_keys: false,
+//   allow_backward: false,
+//   button_label_next: "Continue",
+//   show_clickable_nav: true,
+// };
 
 // TODO minimum time 7000
 const newStudy = {
@@ -213,82 +214,82 @@ studies.forEach((currentStudy, studyIndex) => {
     }
   }
 
-  const instructionsLookup1 = {
-    type: instructionsPlugin,
-    pages: [instructions["studylookup"].text],
-    allow_keys: false,
-    allow_backward: false,
-    button_label_next: "Continue",
-    show_clickable_nav: true,
-  };
+  // const instructionsLookup1 = {
+  //   type: instructionsPlugin,
+  //   pages: [instructions["studylookup"].text],
+  //   allow_keys: false,
+  //   allow_backward: false,
+  //   button_label_next: "Continue",
+  //   show_clickable_nav: true,
+  // };
 
-  const pacman = {};
+  // const pacman = {};
 
-  const instructionsLookup2 = {
-    type: instructionsPlugin,
-    pages: [instructions["pacmanlookup"].text, instructions["test"].text],
-    allow_keys: false,
-    allow_backward: false,
-    button_label_next: "Continue",
-    show_clickable_nav: true,
-  };
+  // const instructionsLookup2 = {
+  //   type: instructionsPlugin,
+  //   pages: [instructions["pacmanlookup"].text, instructions["test"].text],
+  //   allow_keys: false,
+  //   allow_backward: false,
+  //   button_label_next: "Continue",
+  //   show_clickable_nav: true,
+  // };
 
-  const freeRecall = {
-    type: freeRecallPlugin,
-    allow_delete: false,
-    button_label: "hi button label",
-    stimulus: "<b>stim</b>",
-  };
+  // const freeRecall = {
+  //   type: freeRecallPlugin,
+  //   allow_delete: false,
+  //   button_label: "hi button label",
+  //   stimulus: "<b>stim</b>",
+  // };
 
-  const instructionsDemographics = {
-    type: instructionsPlugin,
-    pages: [instructions["demographics"].text],
-    allow_keys: false,
-    allow_backward: false,
-    button_label_next: "Continue",
-    show_clickable_nav: true,
-  };
+  // const instructionsDemographics = {
+  //   type: instructionsPlugin,
+  //   pages: [instructions["demographics"].text],
+  //   allow_keys: false,
+  //   allow_backward: false,
+  //   button_label_next: "Continue",
+  //   show_clickable_nav: true,
+  // };
 
-  const demographics = {
-    type: surveyPlugin,
-    title: "Demographics Information",
-    pages: [
-      [
-        {
-          type: "text",
-          required: true,
-          prompt: "What is your age?",
-          name: "age",
-          placeholder: "e.g. 25",
-          input_type: "number",
-        },
-        {
-          type: "text",
-          required: true,
-          prompt: "What is your gender?",
-          name: "gender",
-          placeholder: "e.g. female",
-        },
-        {
-          type: "multi-choice",
-          required: true,
-          prompt: "Is English your first language?",
-          name: "english",
-          options: ["Yes", "No"],
-          columns: 2,
-        },
-      ],
-    ],
-  };
+  // const demographics = {
+  //   type: surveyPlugin,
+  //   title: "Demographics Information",
+  //   pages: [
+  //     [
+  //       {
+  //         type: "text",
+  //         required: true,
+  //         prompt: "What is your age?",
+  //         name: "age",
+  //         placeholder: "e.g. 25",
+  //         input_type: "number",
+  //       },
+  //       {
+  //         type: "text",
+  //         required: true,
+  //         prompt: "What is your gender?",
+  //         name: "gender",
+  //         placeholder: "e.g. female",
+  //       },
+  //       {
+  //         type: "multi-choice",
+  //         required: true,
+  //         prompt: "Is English your first language?",
+  //         name: "english",
+  //         options: ["Yes", "No"],
+  //         columns: 2,
+  //       },
+  //     ],
+  //   ],
+  // };
 
-  const debrief = {
-    type: instructionsPlugin,
-    pages: [instructions["end"].text, instructions["debrief"].text],
-    allow_keys: false,
-    allow_backward: false,
-    button_label_next: "Continue",
-    show_clickable_nav: true,
-  };
+  // const debrief = {
+  //   type: instructionsPlugin,
+  //   pages: [instructions["end"].text, instructions["debrief"].text],
+  //   allow_keys: false,
+  //   allow_backward: false,
+  //   button_label_next: "Continue",
+  //   show_clickable_nav: true,
+  // };
 });
 
 jsPsych.run(timeline);

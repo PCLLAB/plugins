@@ -37,7 +37,6 @@ const trial = {
     choices: ["Yes", "No"]
   }
 };
-timeline.push();
 ```
 
 ## Parameters

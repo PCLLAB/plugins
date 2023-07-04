@@ -26,7 +26,6 @@ With CDN:
 const trial = {
   type: freeRecall,
 };
-timeline.push();
 ```
 
 ## Parameters
@@ -39,7 +38,7 @@ timeline.push();
 
 ## Data Generated
 
-**This plugin will output data multiple times.**
+**This plugin will output data for each recalled word.**
 
 In addition to the default data collected by all plugins, this plugin collects the following data for each _recalled word_.
 
