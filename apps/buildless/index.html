@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/lightbulb.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buildless</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      @layer base {
+        input,
+        textarea,
+        select {
+          @apply border rounded px-2;
+        }
+        input,
+        select {
+          @apply h-10;
+        }
+      }
+    </style>
+    <script src="https://unpkg.com/jspsych@7.3.2"></script>
+    <link
+      href="https://unpkg.com/jspsych@7.3.2/css/jspsych.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="../../packages/plugin-free-recall/dist/index.global.js"></script>
+    <script src="../../packages/plugin-audio-response/dist/index.global.js"></script>
+  </head>
+  <body>
+    <script>
+      const jsPsych = initJsPsych({
+        on_finish: () => jsPsych.data.displayData(),
+      });
+
+      const start = {
+        type: pcllabFreeRecall,
+      };
+
+      // WebAudio doesn't work if not served through http
+      const trial = {
+        type: pcllabAudioResponse,
+        prompt: "<div>this is the prompt</div>",
+        stimulus: "./audio.m4a",
+        button: {
+          choices: ["one", "two"],
+        },
+        keyboard: {},
+        response_allowed_while_playing: false,
+        show_repeat_button: true,
+      };
+
+      jsPsych.run([start, trial]);
+    </script>
+  </body>
+</html>

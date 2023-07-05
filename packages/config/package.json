@@ -1,0 +1,14 @@
+{
+  "name": "config",
+  "private": true,
+  "version": "0.0.0",
+  "exports": {
+    "./makeTsUpConfig": {
+      "import": "./makeTsUpConfig.mjs"
+    }
+  },
+  "devDependencies": {
+    "@fal-works/esbuild-plugin-global-externals": "^2.1.2",
+    "tsup": "^6.5.0"
+  }
+}

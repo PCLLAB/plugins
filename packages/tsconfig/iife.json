@@ -1,0 +1,10 @@
+{
+  "extends": "./react-library.json",
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "compilerOptions": {
+    "jsx": "react"
+  }
+}
