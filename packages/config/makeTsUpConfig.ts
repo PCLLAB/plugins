@@ -1,10 +1,10 @@
 import { defineConfig } from "tsup";
 import { globalExternals } from "@fal-works/esbuild-plugin-global-externals";
 
-// type Params = {
-//   globalName: string;
-//   externals?: Parameters<typeof globalExternals>[0];
-// };
+type Params = {
+  globalName: string;
+  externals?: Parameters<typeof globalExternals>[0];
+};
 
 // tsup.config.ts is only needed to define external globals for
 // like React, ReactDOM, jsPsych for the iife format, to avoid bundling
@@ -12,8 +12,7 @@ import { globalExternals } from "@fal-works/esbuild-plugin-global-externals";
 
 // default config (no tsup.config.ts necessary) is fine for esm, cjs
 
-export function makeTsUpConfig({ globalName, externals = {} }) {
-  // @ts-expect-error options differ
+export function makeTsUpConfig({ globalName, externals = {} }: Params) {
   return defineConfig((options) => {
     if (!options.format) {
       throw Error("no format defined");

@@ -1,7 +1,7 @@
 {
   "name": "lop-e2-copy",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -22,7 +22,7 @@
     "@jspsych/plugin-instructions": "^1.1.2",
     "@jspsych/plugin-survey": "^0.2.1",
     "@jspsych/plugin-survey-text": "^1.1.2",
-    "@pcllab/plugin-free-recall": "workspace:^0.0.2",
+    "@pcllab/plugin-free-recall": "workspace:^0.1.0",
     "jspsych": "^7.3.1"
   }
 }

@@ -4,11 +4,13 @@
   "version": "0.0.0",
   "exports": {
     "./makeTsUpConfig": {
-      "import": "./makeTsUpConfig.mjs"
+      "import": "./dist/makeTsUpConfig.mjs",
+      "types": "./dist/makeTsUpConfig.d.ts"
     }
   },
-  "devDependencies": {
+  "dependencies": {
     "@fal-works/esbuild-plugin-global-externals": "^2.1.2",
-    "tsup": "^6.5.0"
+    "tsup": "^6.5.0",
+    "typescript": "latest"
   }
 }
