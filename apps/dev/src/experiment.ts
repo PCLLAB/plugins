@@ -5,7 +5,9 @@ import { initJsPsych } from "jspsych";
 import audioResponse from "@pcllab/plugin-audio-response";
 import freeRecall from "@pcllab/plugin-free-recall";
 
-const jsPsych = initJsPsych({ on_finish: () => jsPsych.data.displayData() });
+const jsPsych = initJsPsych({ on_finish: () => {
+  jsPsych.data.get()
+} });
 
 const start = {
   type: freeRecall,

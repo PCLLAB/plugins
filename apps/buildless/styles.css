@@ -1,0 +1,12 @@
+input,
+textarea,
+select {
+  border-radius: 0.25rem;
+  border-width: 1px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+input,
+select {
+  height: 2.5rem;
+}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/lightbulb.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IIFE</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.min.css"
+    />
+    <link
+      href="https://unpkg.com/jspsych@7.3.2/css/jspsych.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/mini.global.js"></script>
+
+    <script src="https://unpkg.com/jspsych@7.3.2"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@pcllab/plugin-audio-response"></script>
+    <script src="https://unpkg.com/@pcllab/plugin-free-recall"></script>
+    <!-- <script src="../../packages/plugin-free-recall/dist/index.global.js"></script>
+    <script src="../../packages/plugin-audio-response/dist/index.global.js"></script> -->
+  </head>
+  <body>
+    <script>
+      const jsPsych = initJsPsych({
+        on_finish: () => jsPsych.data.displayData(),
+      });
+
+      const start = {
+        type: pcllabFreeRecall,
+      };
+
+      // WebAudio doesn't work if not served through http
+      const trial = {
+        type: pcllabAudioResponse,
+        prompt: "<div>this is the prompt</div>",
+        stimulus: "./audio.m4a",
+        button: {
+          choices: ["one", "two"],
+        },
+        keyboard: {},
+        response_allowed_while_playing: false,
+        show_repeat_button: true,
+      };
+
+      jsPsych.run([start, trial]);
+    </script>
+  </body>
+</html>
