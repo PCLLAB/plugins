@@ -13,7 +13,7 @@ npm i @pcllab/plugin-audio-response
 ```
 
 ```js
-import audioResponse from "@pcllab/plugin-audio-response";
+import pcllabAudioResponse from "@pcllab/plugin-audio-response";
 ```
 
 With CDN:
@@ -28,7 +28,7 @@ Other dependencies (react, react-dom, tailwind) need to loaded separately.
 
 ```js
 const trial = {
-  type: audioResponse,
+  type: pcllabAudioResponse,
   stimulus: "audio.mp3"
   keyboard: {
     choices: ["y", "n"]

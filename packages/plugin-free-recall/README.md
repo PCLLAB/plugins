@@ -11,7 +11,7 @@ npm i @pcllab/plugin-free-recall
 ```
 
 ```js
-import freeRecall from "@pcllab/plugin-free-recall";
+import pcllabFreeRecall from "@pcllab/plugin-free-recall";
 ```
 
 With CDN:
@@ -24,7 +24,7 @@ With CDN:
 
 ```js
 const trial = {
-  type: freeRecall,
+  type: pcllabFreeRecall,
 };
 ```
 
