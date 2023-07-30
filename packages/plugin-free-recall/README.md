@@ -1,4 +1,4 @@
-# free-recall-plugin
+# plugin-free-recall
 
 This plugin allows free recall. A text input allows any number of non-repeated words to be added to a list.
 

@@ -1,4 +1,4 @@
-# audio-response-plugin
+# plugin-audio-response
 
 This is an audio response plugin that can accept button and keyboard responses.
 
