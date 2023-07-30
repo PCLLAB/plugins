@@ -1,8 +1,8 @@
-const Scorer = require("./scoring");
-const uuid4 = require("uuid4");
+import Scorer from "./scoring";
+import { v4 as uuidv4 } from "uuid";
 
 // Util
-const setParameter = require("./util").setParameter;
+import { setParameter } from "./util";
 
 class Data {
   constructor(coreInstance) {
@@ -51,7 +51,7 @@ class Data {
     this.currentDataBlock.response_index = setParameter(
       this.response_index,
       "",
-      null,
+      null
     );
     this.currentDataBlock._data = setParameter(metadata, {}, null);
 
@@ -85,7 +85,7 @@ class Data {
         if (Array.isArray(currentDataBlock.score)) {
           currentDataBlock.total_score = currentDataBlock.score.reduce(
             (a, b) => a + b,
-            0,
+            0
           );
           currentDataBlock.cumulative_score =
             prev_score + currentDataBlock.total_score;
@@ -109,7 +109,7 @@ class Data {
       this.currentDataBlock.response = setParameter(
         this.currentDataBlock.response[0],
         null,
-        null,
+        null
       );
     }
 
@@ -158,10 +158,10 @@ class Data {
     const lastBlock = _db.pop();
 
     _db.forEach((dataBlock) =>
-      jsPsych.data.write(this._cleanDataBlock(dataBlock)),
+      this.coreInstance.jsPsych.data.write(this._cleanDataBlock(dataBlock))
     );
 
-    jsPsych.finishTrial(this._cleanDataBlock(lastBlock));
+    this.coreInstance.jsPsych.finishTrial(this._cleanDataBlock(lastBlock));
   }
 
   getDataBlocks() {
@@ -179,7 +179,7 @@ class Data {
 
 class DataBlock {
   constructor() {
-    this._id = uuid4();
+    this._id = uuidv4();
     this.cue = "";
     this.cue_list = "";
     this.target = "";
@@ -220,4 +220,4 @@ class DataBlock {
   }
 }
 
-module.exports = Data;
+export default Data;

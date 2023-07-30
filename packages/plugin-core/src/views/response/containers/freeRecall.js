@@ -1,11 +1,11 @@
-const ResponseContainer = require("./base");
+import $ from "jquery";
+import ResponseContainer from "./base";
 
 // Util
-const setParameter = require("../../../util").setParameter;
-const setTimeout = require("../../../util").setTimeout;
+import { setParameter, setTimeout } from "../../../util";
 
 // Constants
-const RESPONSE_ALIGNMENT = require("../../../constants").RESPONSE_ALIGNMENT;
+import { RESPONSE_ALIGNMENT } from "../../../constants";
 
 class FreeRecallResponseContainer extends ResponseContainer {
   constructor(generatorInstance, stimulus, dataInstance) {
@@ -17,7 +17,7 @@ class FreeRecallResponseContainer extends ResponseContainer {
     this.textAlignment = setParameter(
       this.generator.text_align | this.stimulus.text_align,
       RESPONSE_ALIGNMENT.center,
-      "string",
+      "string"
     );
 
     let alignment = "text-center";
@@ -95,7 +95,7 @@ class FreeRecallResponseContainer extends ResponseContainer {
       });
 
       this.generator.sharedResponsePanelBody.appendTo(
-        this.generator.sharedResponsePanel,
+        this.generator.sharedResponsePanel
       );
 
       // Response list
@@ -182,4 +182,4 @@ class FreeRecallResponseContainer extends ResponseContainer {
   }
 }
 
-module.exports = FreeRecallResponseContainer;
+export default FreeRecallResponseContainer;

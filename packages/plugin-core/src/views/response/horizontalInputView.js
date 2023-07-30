@@ -1,7 +1,8 @@
-const InputView = require("./inputView");
+import $ from "jquery";
+import InputView from "./inputView";
 
 // Util
-const setParameter = require("../../util").setParameter;
+import { setParameter } from "../../util";
 
 class HorizontalInputView extends InputView {
   render() {
@@ -9,7 +10,7 @@ class HorizontalInputView extends InputView {
     const responseCount = setParameter(
       this.stimulus.response_count,
       this.coreInstance.response_count,
-      "number",
+      "number"
     );
 
     const rowContainer = $("<div>", { class: "row justify-content-center" });
@@ -38,4 +39,4 @@ class HorizontalInputView extends InputView {
   }
 }
 
-module.exports = HorizontalInputView;
+export default HorizontalInputView;

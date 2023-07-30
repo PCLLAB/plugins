@@ -1,4 +1,4 @@
-# Core
+# plugin-core
 
 This plugin handles most of the core procedures of an experiment. The tasks that tasks that it can do include (but are not limited to) showing instructions, short-answer tasks, cued-recall tasks, ratings tasks, etc.
 
@@ -133,7 +133,7 @@ function list_data(data) {
 jsPsych.init({
     ...
     timeline: [{
-        type: 'pcllab-core',
+        type: pcllabCore,
         ...
         done_callback: list_data
     }]
@@ -155,7 +155,7 @@ The callback `feedback_html` provides a way to show feedback after a screen give
 
 ```javascript
     const trial = {
-        type: 'pcllab-core',
+        type: pcllabCore,
         stimuli: [
             {
                 cue: 'Should pineapples be on pizza',
@@ -238,7 +238,7 @@ In this example, need to note how this.instructions is set up (it's calling in i
 
 ```javascript
 const lookUp = {
-  type: "pcllab-core",
+  type: pcllabCore,
   stimuli: [this.instructions["look-up"]],
   response_count: 0,
   show_button: true,
@@ -261,7 +261,7 @@ Also explain how to show individual stimuli
 
 ```javascript
 const studyItemsTrial = {
-  type: "pcllab-core",
+  type: pcllabCore,
   stimuli: [
     { response_type: "study_items", cue: "Kirvis", target: "Axe" },
     { response_type: "study_items", cue: "Marco", target: "Polo" },
@@ -278,7 +278,7 @@ Explain how cued recall is done. Word as cue, or a question as cue. Box size dif
 
 ```javascript
 const cuedRecallTrial = {
-  type: "pcllab-core",
+  type: pcllabCore,
   stimuli: [
     { response_type: "study_items", cue: "A", target: "Apple" },
     {

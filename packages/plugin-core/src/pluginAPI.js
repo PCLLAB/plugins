@@ -24,4 +24,4 @@ class PluginAPI {
   }
 }
 
-module.exports = PluginAPI;
+export default PluginAPI;

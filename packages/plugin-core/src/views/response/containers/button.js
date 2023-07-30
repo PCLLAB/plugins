@@ -1,11 +1,11 @@
-const ResponseContainer = require("./base");
+import $ from "jquery";
+import ResponseContainer from "./base";
 
 // Util
-const setParameter = require("../../../util").setParameter;
-const setTimeout = require("../../../util").setTimeout;
+import { setParameter, setTimeout } from "../../../util";
 
 // Constants
-const getButtonColorClass = require("../../../constants").getButtonColorClass;
+import { getButtonColorClass } from "../../../constants";
 
 class ButtonResponseContainer extends ResponseContainer {
   constructor(generatorInstance, buttonLabel, stimulus, dataInstance) {
@@ -54,4 +54,4 @@ class ButtonResponseContainer extends ResponseContainer {
   }
 }
 
-module.exports = ButtonResponseContainer;
+export default ButtonResponseContainer;

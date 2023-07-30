@@ -1,3 +1,4 @@
+import $ from "jquery";
 class InputHandler {
   constructor(nextButton) {
     this.$nextButton = nextButton;
@@ -8,7 +9,7 @@ class InputHandler {
 
     let isValid = true;
     $(
-      "input[type=text]:not(.pcllab-hp-input), textarea:not(.pcllab-hp-input)",
+      "input[type=text]:not(.pcllab-hp-input), textarea:not(.pcllab-hp-input)"
     ).each(function () {
       const $input = $(this);
       if ($input.val().length < 3) {
@@ -37,4 +38,4 @@ class InputHandler {
   }
 }
 
-module.exports = InputHandler;
+export default InputHandler;

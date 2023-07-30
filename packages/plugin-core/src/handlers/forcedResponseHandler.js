@@ -17,4 +17,4 @@ class ForcedResponseHandler {
   }
 }
 
-module.exports = ForcedResponseHandler;
+export default ForcedResponseHandler;

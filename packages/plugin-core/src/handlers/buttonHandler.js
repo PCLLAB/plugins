@@ -1,10 +1,11 @@
-const ButtonResponseContainer = require("../views/response/containers/button");
+import $ from "jquery";
+import ButtonResponseContainer from "../views/response/containers/button";
 
 class ButtonHandler {
   constructor(nextButton, responseButtons) {
     this.$nextButton = nextButton;
     this.responseButtons = responseButtons.filter(
-      (rb) => rb instanceof ButtonResponseContainer,
+      (rb) => rb instanceof ButtonResponseContainer
     );
   }
 
@@ -20,4 +21,4 @@ class ButtonHandler {
   }
 }
 
-module.exports = ButtonHandler;
+export default ButtonHandler;

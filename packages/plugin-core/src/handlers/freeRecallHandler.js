@@ -1,5 +1,4 @@
-const setInterval = require("../util").setInterval;
-const setTimeout = require("../util").setTimeout;
+import { setTimeout } from "../util";
 
 class FreeRecallHandler {
   constructor(nextButton, responseContainer) {
@@ -32,4 +31,4 @@ class FreeRecallHandler {
   }
 }
 
-module.exports = FreeRecallHandler;
+export default FreeRecallHandler;

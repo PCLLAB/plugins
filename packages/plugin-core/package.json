@@ -1,6 +1,6 @@
 {
   "name": "@pcllab/plugin-core",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "type": "module",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
@@ -29,12 +29,18 @@
   },
   "homepage": "https://github.com/PCLLAB/plugins/tree/main/packages/plugin-core#readme",
   "devDependencies": {
+    "@types/jquery": "^3.5.16",
     "config": "workspace:*",
     "tsconfig": "workspace:*",
     "tsup": "^7.1.0"
   },
   "dependencies": {
-    "jspsych": "^7.3.3"
+    "custom-event": "^1.0.1",
+    "dragula": "^3.7.3",
+    "jquery": "^3.7.0",
+    "jspsych": "^7.3.3",
+    "string-similarity-js": "^2.1.4",
+    "uuid": "^9.0.0"
   },
   "publishConfig": {
     "access": "public"

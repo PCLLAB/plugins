@@ -1,22 +1,22 @@
-const RESPONSE_TYPE = require("../../constants").RESPONSE_TYPE;
+import $ from "jquery";
+import { RESPONSE_TYPE } from "../../constants";
 
 /* Util */
-const setParameter = require("../../util").setParameter;
-const $disableSelect = require("../../util").$disableSelect;
+import { setParameter, $disableSelect } from "../../util";
 
 class RecallStandardView {
   constructor(stimulus) {
     this.response_type = setParameter(
       stimulus.response_type,
       RESPONSE_TYPE.input,
-      "string",
+      "string"
     );
 
     this.text = setParameter(stimulus.text, "", "string");
     this.text_panel_title = setParameter(
       stimulus.text_panel_title,
       null,
-      "string",
+      "string"
     );
     this.show_text = setParameter(stimulus.show_text, true, "boolean");
 
@@ -24,7 +24,7 @@ class RecallStandardView {
     this.image_panel_title = setParameter(
       stimulus.image_panel_title,
       null,
-      "string",
+      "string"
     );
     this.show_image = setParameter(stimulus.show_image, true, "boolean");
 
@@ -32,7 +32,7 @@ class RecallStandardView {
     this.cue_panel_title = setParameter(
       stimulus.cue_panel_title,
       null,
-      "string",
+      "string"
     );
     this.show_cue = setParameter(stimulus.show_cue, true, "boolean");
 
@@ -40,7 +40,7 @@ class RecallStandardView {
     this.target_panel_title = setParameter(
       stimulus.target_panel_title,
       null,
-      "string",
+      "string"
     );
     this.show_target = setParameter(stimulus.show_target, false, "boolean");
 
@@ -48,7 +48,7 @@ class RecallStandardView {
     this.cue_list_panel_title = setParameter(
       stimulus.cue_list_panel_title,
       null,
-      "string",
+      "string"
     );
     this.show_cue_list = setParameter(stimulus.show_cue_list, true, "boolean");
 
@@ -114,7 +114,7 @@ class RecallStandardView {
 					${this.text}
 				</div>
 			</div>
-		`),
+		`)
     );
     $element.append($panel);
   }
@@ -132,7 +132,7 @@ class RecallStandardView {
 					<img src="${this.image}" style="max-width:100%">
 				</div>
 			</div>
-		`),
+		`)
     );
   }
 
@@ -144,7 +144,7 @@ class RecallStandardView {
 				<h5 class="white-text text-uppercase" style="font-weight: 500">${this.image_panel_title}</h5>
 			</div>
 		</div>
-		`),
+		`)
     );
     let $panelBody = $(`
 			<div class="card-body p-3"></div>
@@ -157,7 +157,7 @@ class RecallStandardView {
 					<img src="${this.image}" style="max-width:100%">
 				</div>
 			</div>
-		`),
+		`)
     );
     $element.append($panel);
   }
@@ -195,7 +195,7 @@ class RecallStandardView {
 						<h3 class="text-center" style="${targetStyle}">${this.target}</h3>
 					</div>
 				</div>
-			`),
+			`)
       );
     }
   }
@@ -227,7 +227,7 @@ class RecallStandardView {
 					<p tyle="${cueStyle}">${this.cue}</p>
 				</div>
 			</div>
-		`),
+		`)
     );
     $element.append($panel);
 
@@ -251,7 +251,7 @@ class RecallStandardView {
 						<p style="${targetStyle}">${this.target}</p>
 					</div>
 				</div>
-			`),
+			`)
       );
       $element.append($panel);
     }
@@ -271,7 +271,7 @@ class RecallStandardView {
 						<h3 class="text-center">${cue}</h3>
 					</div>
 				</div>
-			`),
+			`)
       );
     });
   }
@@ -284,7 +284,7 @@ class RecallStandardView {
 					<h5 class="white-text text-uppercase" style="font-weight: 500">${this.cue_list_panel_title}</h5>
 				</div>
 			</div>
-		`),
+		`)
     );
     let $panelBody = $(`
 			<div class="card-body p-3"></div>
@@ -302,7 +302,7 @@ class RecallStandardView {
 						${hr}
 					</div>
 				</div>
-			`),
+			`)
       );
     });
     $element.append($panel);
@@ -311,7 +311,7 @@ class RecallStandardView {
   renderAudio($element) {
     // const $iFrame = $(`<iframe src="${this.audio_file}" allow="autoplay" style="display:none" id="audio_element"></iframe>`)
     const $iFrame = $(
-      `<iframe allow="autoplay" style="display:none" ></iframe>`,
+      `<iframe allow="autoplay" style="display:none" ></iframe>`
     );
     const $iFrameAudio = $(`
 			<audio autoplay id="audio_element">
@@ -344,4 +344,4 @@ class RecallStandardView {
   }
 }
 
-module.exports = RecallStandardView;
+export default RecallStandardView;

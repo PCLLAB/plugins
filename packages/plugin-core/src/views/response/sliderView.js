@@ -1,8 +1,9 @@
-const InputView = require("./inputView");
-const SliderResponseContainer = require("./containers/slider");
+import $ from "jquery";
+import InputView from "./inputView";
+import SliderResponseContainer from "./containers/slider";
 
 // Util
-const setParameter = require("../../util").setParameter;
+import { setParameter } from "../../util";
 
 class SliderView extends InputView {
   constructor($displayElement, coreInstance, dataInstance, stimulus) {
@@ -13,7 +14,7 @@ class SliderView extends InputView {
     const rc = new SliderResponseContainer(
       this,
       this.stimulus,
-      this.dataInstance,
+      this.dataInstance
     );
     this.responseContainers.push(rc);
     ++this.numResponseContainers;
@@ -26,7 +27,7 @@ class SliderView extends InputView {
     const responseCount = setParameter(
       this.stimulus.response_count,
       this.coreInstance.response_count,
-      "number",
+      "number"
     );
 
     for (let i = 0; i < responseCount; i++) {
@@ -56,4 +57,4 @@ class SliderView extends InputView {
   }
 }
 
-module.exports = SliderView;
+export default SliderView;

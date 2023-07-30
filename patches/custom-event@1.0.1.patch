@@ -1,0 +1,14 @@
+diff --git a/.npmignore b/.npmignore
+deleted file mode 100644
+index 705995e0957d3bd677cb2b42336fd3cef8b81694..0000000000000000000000000000000000000000
+diff --git a/index.js b/index.js
+index 274f79a64d7640157040ac5ea90aa4921c94495e..dd8afa74a7c4ac5312fe047ab25aa9598a8d204f 100644
+--- a/index.js
++++ b/index.js
+@@ -1,5 +1,5 @@
+ 
+-var NativeCustomEvent = global.CustomEvent;
++var NativeCustomEvent = window.CustomEvent;
+ 
+ function useNative () {
+   try {

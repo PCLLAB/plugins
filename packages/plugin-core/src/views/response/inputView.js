@@ -1,11 +1,12 @@
-const InputResponseContainer = require("./containers/input");
-const HoneypotResponseContainer = require("./containers/honeypot");
+import $ from "jquery";
+import InputResponseContainer from "./containers/input";
+import HoneypotResponseContainer from "./containers/honeypot";
 
 // Util
-const setParameter = require("../../util").setParameter;
+import { setParameter } from "../../util";
 
 // Handler
-const InputHandler = require("../../handlers/inputHandler");
+import InputHandler from "../../handlers/inputHandler";
 
 class InputView {
   constructor($displayElement, coreInstance, dataInstance, stimulus) {
@@ -27,7 +28,7 @@ class InputView {
       this.coreInstance.input_size,
       this.coreInstance.response_box_align,
       this.stimulus,
-      this.dataInstance,
+      this.dataInstance
     );
     this.responseContainers.push(rc);
     ++this.numResponseContainers;
@@ -41,7 +42,7 @@ class InputView {
       this.coreInstance.input_size,
       this.coreInstance.response_box_align,
       this.stimulus,
-      this.dataInstance,
+      this.dataInstance
     );
     this.responseContainers.push(rc);
     ++this.numResponseContainers;
@@ -54,7 +55,7 @@ class InputView {
     const responseCount = setParameter(
       this.stimulus.response_count,
       this.coreInstance.response_count,
-      "number",
+      "number"
     );
 
     for (let i = 0; i < responseCount; i++) {
@@ -92,4 +93,4 @@ class InputView {
   }
 }
 
-module.exports = InputView;
+export default InputView;

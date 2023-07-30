@@ -1,11 +1,11 @@
-const ResponseContainer = require("./base");
+import $ from "jquery";
+import ResponseContainer from "./base";
 
 // Util
-const setTimeout = require("../../../util").setTimeout;
+import { setTimeout } from "../../../util";
 
 // Constants
-const RESPONSE_ALIGNMENT = require("../../../constants").RESPONSE_ALIGNMENT;
-const INPUT_SIZE = require("../../../constants").INPUT_SIZE;
+import { RESPONSE_ALIGNMENT, INPUT_SIZE } from "../../../constants";
 
 class InputResponseContainer extends ResponseContainer {
   constructor(
@@ -13,7 +13,7 @@ class InputResponseContainer extends ResponseContainer {
     containerSize,
     textAlignment,
     stimulus,
-    dataInstance,
+    dataInstance
   ) {
     super();
 
@@ -194,11 +194,11 @@ class InputResponseContainer extends ResponseContainer {
 				<div class="card-body p-3"></div>
 			`);
       this.generator.sharedResponsePanelBody.appendTo(
-        this.generator.sharedResponsePanel,
+        this.generator.sharedResponsePanel
       );
     }
     this.generator.sharedResponsePanelBody.append(this.form);
   }
 }
 
-module.exports = InputResponseContainer;
+export default InputResponseContainer;

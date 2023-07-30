@@ -19,6 +19,7 @@
     "@jspsych/plugin-fullscreen": "^1.1.2",
     "@pcllab/plugin-audio-response": "workspace:*",
     "@pcllab/plugin-free-recall": "workspace:*",
+    "@pcllab/plugin-core": "workspace:*",
     "jspsych": "^7.3.2"
   }
 }

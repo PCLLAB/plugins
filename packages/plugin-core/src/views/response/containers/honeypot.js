@@ -1,4 +1,4 @@
-const InputResponseContainer = require("./input");
+import InputResponseContainer from "./input";
 
 class HoneypotResponseContainer extends InputResponseContainer {
   constructor(
@@ -6,14 +6,14 @@ class HoneypotResponseContainer extends InputResponseContainer {
     containerSize,
     textAlignment,
     stimulus,
-    dataInstance,
+    dataInstance
   ) {
     super(
       generatorInstance,
       containerSize,
       textAlignment,
       stimulus,
-      dataInstance,
+      dataInstance
     );
     this.form.css("display", "none");
     this.label.remove();
@@ -29,7 +29,7 @@ class HoneypotResponseContainer extends InputResponseContainer {
     ];
     this.textarea.attr(
       "name",
-      name_attrs[Math.floor(Math.random() * name_attrs.length)],
+      name_attrs[Math.floor(Math.random() * name_attrs.length)]
     );
     this.textarea.attr("tabindex", 1);
     this.textarea.attr("autocomplete", "off");
@@ -48,4 +48,4 @@ class HoneypotResponseContainer extends InputResponseContainer {
   }
 }
 
-module.exports = HoneypotResponseContainer;
+export default HoneypotResponseContainer;

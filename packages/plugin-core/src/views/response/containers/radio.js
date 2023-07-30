@@ -1,9 +1,9 @@
-const ResponseContainer = require("./base");
+import $ from "jquery";
+import { v4 as uuidv4 } from "uuid";
+import ResponseContainer from "./base";
 
 // Util
-const UUID4 = require("uuid4");
-const setParameter = require("../../../util").setParameter;
-const setTimeout = require("../../../util").setTimeout;
+import { setParameter, setTimeout } from "../../../util";
 
 class RadioResponseContainer extends ResponseContainer {
   constructor(generatorInstance, stimulus, dataInstance) {
@@ -46,7 +46,7 @@ class RadioResponseContainer extends ResponseContainer {
           const inputWidth = 13;
           this._formWidth = Math.max(
             $(label).outerWidth() + inputWidth * 3,
-            this._formWidth,
+            this._formWidth
           );
         });
         this.form.css({
@@ -56,9 +56,9 @@ class RadioResponseContainer extends ResponseContainer {
       }, 10);
     }
 
-    const radioGroupName = UUID4();
+    const radioGroupName = uuidv4();
     this.responseList.forEach((label) => {
-      const _id = UUID4();
+      const _id = uuidv4();
       const $radio = $(`
                 <div class="form-check ${inlineClass}">
                     <input type="radio" class="form-check-input" id="${_id}" value="${label}" name="${radioGroupName}">
@@ -110,7 +110,7 @@ class RadioResponseContainer extends ResponseContainer {
 					<div class="card-body p-3"></div>
 				`);
         this.generator.sharedResponsePanelBody.appendTo(
-          this.generator.sharedResponsePanel,
+          this.generator.sharedResponsePanel
         );
       } else {
         this.generator.sharedResponsePanel = $("<div>", {
@@ -120,11 +120,11 @@ class RadioResponseContainer extends ResponseContainer {
           class: "col",
         });
         this.generator.sharedResponsePanel.append(
-          this.generator.sharedResponsePanelBody,
+          this.generator.sharedResponsePanelBody
         );
       }
     }
   }
 }
 
-module.exports = RadioResponseContainer;
+export default RadioResponseContainer;

@@ -23,5 +23,11 @@
   "engines": {
     "node": ">=14.0.0"
   },
-  "packageManager": "pnpm@8.6.6"
+  "packageManager": "pnpm@8.6.6",
+  "pnpm": {
+    "patchedDependencies": {
+      "dragula@3.7.3": "patches/dragula@3.7.3.patch",
+      "custom-event@1.0.1": "patches/custom-event@1.0.1.patch"
+    }
+  }
 }

@@ -7,10 +7,10 @@
  * @author Vishnu Vijayan
  */
 
-const setInterval = require("./util").setInterval;
-const setTimeout = require("./util").setTimeout;
+import $ from "jquery";
+import { setTimeout } from "./util";
 
-class ProgressBar {
+export class ProgressBar {
   constructor(duration, reverse) {
     if (isNaN(duration)) {
       throw new Error("Progress bar duration is invalid");
@@ -51,9 +51,7 @@ class ProgressBar {
   }
 }
 
-module.exports.ProgressBar = ProgressBar;
-
-class TotalProgressBar {
+export class TotalProgressBar {
   constructor(coreInstance) {
     this.coreInstance = coreInstance;
     this.duration = this._calculateDuration();
@@ -97,5 +95,3 @@ class TotalProgressBar {
     return (trial_time + isi_time) * n;
   }
 }
-
-module.exports.TotalProgressBar = TotalProgressBar;

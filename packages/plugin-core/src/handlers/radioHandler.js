@@ -1,3 +1,4 @@
+import $ from "jquery";
 class RadioHandler {
   constructor(nextButton) {
     this.$nextButton = nextButton;
@@ -8,7 +9,7 @@ class RadioHandler {
 
     let isValid = false;
     $(
-      "input[type=radio]:not(.pcllab-hp-input), textarea:not(.pcllab-hp-input)",
+      "input[type=radio]:not(.pcllab-hp-input), textarea:not(.pcllab-hp-input)"
     ).each(function () {
       const $input = $(this);
       if ($input.is(":checked")) {
@@ -37,4 +38,4 @@ class RadioHandler {
   }
 }
 
-module.exports = RadioHandler;
+export default RadioHandler;

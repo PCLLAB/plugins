@@ -1,45 +1,47 @@
-const uuid4 = require("uuid4");
-const Data = require("./data");
+import $ from "jquery";
+import { v4 as uuidv4 } from "uuid";
+import Data from "./data";
 
 // Components
-const ProgressBar = require("./progressBar").ProgressBar;
-const TotalProgressBar = require("./progressBar").TotalProgressBar;
-const ForcedResponseHandler = require("./handlers/forcedResponseHandler");
-const PluginAPI = require("./pluginAPI");
+import { ProgressBar, TotalProgressBar } from "./progressBar";
+import ForcedResponseHandler from "./handlers/forcedResponseHandler";
+import PluginAPI from "./pluginAPI";
 
 // Buttons
-const NextButton = require("./buttons").NextButton;
-const IDKButton = require("./buttons").IDKButton;
-const RepeatButton = require("./buttons").RepeatButton;
+import { NextButton, IDKButton, RepeatButton } from "./buttons";
 
 // Constants
-const Constants = require("./constants");
-const RESPONSE_TYPE = require("./constants").RESPONSE_TYPE;
-const RESPONSE_ALIGNMENT = require("./constants").RESPONSE_ALIGNMENT;
-const CUE_ALIGNMENT = require("./constants").CUE_ALIGNMENT;
-const SCORING_STRATEGY = require("./constants").SCORING_STRATEGY;
-const INPUT_SIZE = require("./constants").INPUT_SIZE;
+import {
+  INPUT_SIZE,
+  RESPONSE_TYPE,
+  RESPONSE_ALIGNMENT,
+  CUE_ALIGNMENT,
+  SCORING_STRATEGY,
+  getButtonColorClass,
+  setButtonColorClass,
+} from "./constants";
 
 // Util
-const setParameter = require("./util").setParameter;
-const setParameterFromConstants = require("./util").setParameterFromConstants;
-const $hide = require("./util").$hide;
-const $show = require("./util").$show;
-const setInterval = require("./util").setInterval;
-const setTimeout = require("./util").setTimeout;
-const clearAllTimers = require("./util").clearAllTimers;
-const compareResponse = require("./util").compareResponse;
+import {
+  setParameter,
+  setParameterFromConstants,
+  $hide,
+  $show,
+  setTimeout,
+  clearAllTimers,
+  compareResponse,
+} from "./util";
 
 // Views
-const RecallStandardView = require("./views/recall/standardView");
-const RecallHorizontalView = require("./views/recall/horizontalView");
-const RecallWordBankView = require("./views/recall/wordBankView");
-const ResponseInputView = require("./views/response/inputView");
-const ResponseHorizontalInputView = require("./views/response/horizontalInputView");
-const ResponseSliderView = require("./views/response/sliderView");
-const ResponseRadioView = require("./views/response/radioView");
-const ResponseButtonView = require("./views/response/buttonView");
-const ResponseFreeRecallView = require("./views/response/freeRecallView");
+import RecallStandardView from "./views/recall/standardView";
+import RecallHorizontalView from "./views/recall/horizontalView";
+import RecallWordBankView from "./views/recall/wordBankView";
+import ResponseInputView from "./views/response/inputView";
+import ResponseHorizontalInputView from "./views/response/horizontalInputView";
+import ResponseSliderView from "./views/response/sliderView";
+import ResponseRadioView from "./views/response/radioView";
+import ResponseButtonView from "./views/response/buttonView";
+import ResponseFreeRecallView from "./views/response/freeRecallView";
 
 /**
  * @name Core
@@ -56,7 +58,7 @@ const ResponseFreeRecallView = require("./views/response/freeRecallView");
  */
 
 class Core {
-  constructor(display_element, trial) {
+  constructor(display_element, trial, jsPsych) {
     if (!display_element) {
       throw new Error("Invalid display element", display_element);
     }
@@ -69,6 +71,8 @@ class Core {
       throw new Error("Invalid trial stimulus", trial.stimuli);
     }
 
+    this.jsPsych = jsPsych;
+
     // Plugin parameters
     this.trial = trial;
     this.stimuli = setParameter(trial.stimuli, [], null);
@@ -80,12 +84,12 @@ class Core {
     this.correct_feedback = setParameter(
       trial.correct_feedback,
       false,
-      "boolean",
+      "boolean"
     );
     this.correct_feedback_time = setParameter(
       trial.correct_feedback_time,
       1500,
-      "number",
+      "number"
     );
 
     // Stimulus parameters
@@ -94,59 +98,59 @@ class Core {
     this.input_size = setParameter(
       trial.input_size,
       INPUT_SIZE.medium,
-      "string",
+      "string"
     );
     this.show_button = setParameter(trial.show_button, false, "boolean");
     this.show_i_dont_know = setParameter(
       trial.show_i_dont_know,
       false,
-      "boolean",
+      "boolean"
     );
     this.show_repeat = setParameter(trial.show_repeat, false, "boolean");
     this.show_delete = setParameter(trial.show_delete, true, "boolean");
     this.show_repeat_minimum_time = setParameter(
       trial.show_repeat_minimum_time,
       0,
-      "number",
+      "number"
     );
     this.forced_response = setParameter(
       trial.forced_response,
       false,
-      "boolean",
+      "boolean"
     );
     this.response_count = setParameter(trial.response_count, 1, "number");
     this.response_columns = setParameter(trial.response_columns, 1, "number");
     this.response_box_align = setParameter(
       trial.response_box_align,
       RESPONSE_ALIGNMENT.center,
-      "string",
+      "string"
     ).toLowerCase();
     this.cue_alignment = setParameter(
       trial.cue_align,
       CUE_ALIGNMENT.vertical,
-      "string",
+      "string"
     ).toLowerCase();
     this.word_bank_alignment = setParameter(
       trial.word_bank_alignm,
       CUE_ALIGNMENT.vertical,
-      "string",
+      "string"
     ).toLowerCase();
 
     this.isi_hide_title = setParameter(trial.isi_hide_title, true, "boolean");
     this.isi_hide_button_container = setParameter(
       trial.isi_hide_button_container,
       true,
-      "boolean",
+      "boolean"
     );
     this.isi_hide_trial_container = setParameter(
       trial.isi_hide_trial_container,
       true,
-      "boolean",
+      "boolean"
     );
     this.isi_hide_progress_container = setParameter(
       trial.isi_hide_progress_container,
       true,
-      "boolean",
+      "boolean"
     );
 
     // Timing parameters
@@ -157,7 +161,7 @@ class Core {
     this.progress_total_time = setParameter(
       trial.progress_total_time,
       false,
-      "boolean",
+      "boolean"
     );
 
     // Scoring parameters
@@ -165,7 +169,7 @@ class Core {
       trial.scoring_strategy,
       SCORING_STRATEGY,
       null,
-      "string",
+      "string"
     );
     this.scoringParams = setParameter(trial.scoring_params, null, null);
 
@@ -173,17 +177,17 @@ class Core {
     this.on_stimulus_start = setParameter(
       trial.on_stimulus_start,
       () => {},
-      "function",
+      "function"
     );
     this.on_stimulus_end = setParameter(
       trial.on_stimulus_end,
       () => {},
-      "function",
+      "function"
     );
     this.done_callback = setParameter(
       trial.done_callback,
       () => {},
-      "function",
+      "function"
     );
 
     // Template properties
@@ -202,13 +206,13 @@ class Core {
     this._totalProgressBar = null;
 
     // Set default button color
-    const oldButtonColor = Constants.getButtonColorClass();
+    const oldButtonColor = getButtonColorClass();
     const newButtonColor = setParameter(
       trial.button_color_class,
       oldButtonColor,
-      "string",
+      "string"
     );
-    Constants.setButtonColorClass(newButtonColor);
+    setButtonColorClass(newButtonColor);
 
     this.buildTemplate();
   }
@@ -229,7 +233,9 @@ class Core {
   _start() {
     // Randomize stimuli if necessary
     if (this.randomize) {
-      this._stimuliList = jsPsych.randomization.shuffle(this.stimuli).reverse();
+      this._stimuliList = this.jsPsych.randomization
+        .shuffle(this.stimuli)
+        .reverse();
     }
 
     // Render the total progress bar
@@ -247,7 +253,7 @@ class Core {
   showRecall(stimulus) {
     clearAllTimers();
 
-    stimulus._id = setParameter(stimulus._id, uuid4(), "string");
+    stimulus._id = setParameter(stimulus._id, uuidv4(), "string");
     stimulus.data = setParameter(stimulus.data, {}, null);
 
     this.$trial_container.empty();
@@ -281,7 +287,7 @@ class Core {
     let responseCount = setParameter(
       stimulus.response_count,
       this.response_count,
-      "number",
+      "number"
     );
     //Display cues in layers
     if (stimulus.show_stacked_cue_response) {
@@ -320,7 +326,7 @@ class Core {
         responseViewType = setParameter(
           stimulus.response_type,
           RESPONSE_TYPE.input,
-          "string",
+          "string"
         );
         responseView = null;
         switch (responseViewType) {
@@ -329,7 +335,7 @@ class Core {
               $responsePanel,
               this,
               this._data,
-              layerStimulus,
+              layerStimulus
             );
             break;
           }
@@ -339,7 +345,7 @@ class Core {
               $responsePanel,
               this,
               this._data,
-              layerStimulus,
+              layerStimulus
             );
             break;
           }
@@ -349,7 +355,7 @@ class Core {
               $responsePanel,
               this,
               this._data,
-              layerStimulus,
+              layerStimulus
             );
             break;
           }
@@ -359,7 +365,7 @@ class Core {
               $responsePanel,
               this,
               this._data,
-              layerStimulus,
+              layerStimulus
             );
             break;
           }
@@ -369,7 +375,7 @@ class Core {
               $responsePanel,
               this,
               this._data,
-              layerStimulus,
+              layerStimulus
             );
             break;
           }
@@ -379,7 +385,7 @@ class Core {
               $responsePanel,
               this,
               this._data,
-              layerStimulus,
+              layerStimulus
             );
             break;
           }
@@ -389,7 +395,7 @@ class Core {
               $responsePanel,
               this,
               this._data,
-              layerStimulus,
+              layerStimulus
             );
           }
         }
@@ -451,7 +457,7 @@ class Core {
       responseViewType = setParameter(
         stimulus.response_type,
         RESPONSE_TYPE.input,
-        "string",
+        "string"
       );
       responseView = null;
       switch (responseViewType) {
@@ -460,7 +466,7 @@ class Core {
             $responsePanel,
             this,
             this._data,
-            stimulus,
+            stimulus
           );
           break;
         }
@@ -470,7 +476,7 @@ class Core {
             $responsePanel,
             this,
             this._data,
-            stimulus,
+            stimulus
           );
           break;
         }
@@ -480,7 +486,7 @@ class Core {
             $responsePanel,
             this,
             this._data,
-            stimulus,
+            stimulus
           );
           break;
         }
@@ -490,7 +496,7 @@ class Core {
             $responsePanel,
             this,
             this._data,
-            stimulus,
+            stimulus
           );
           break;
         }
@@ -500,7 +506,7 @@ class Core {
             $responsePanel,
             this,
             this._data,
-            stimulus,
+            stimulus
           );
           break;
         }
@@ -510,7 +516,7 @@ class Core {
             $responsePanel,
             this,
             this._data,
-            stimulus,
+            stimulus
           );
           break;
         }
@@ -520,7 +526,7 @@ class Core {
             $responsePanel,
             this,
             this._data,
-            stimulus,
+            stimulus
           );
         }
       }
@@ -531,7 +537,7 @@ class Core {
     if (stimulus.word_list) {
       const wordBank = new RecallWordBankView(
         stimulus,
-        this.word_bank_alignment,
+        this.word_bank_alignment
       );
       wordBank.appendTo($wordBankPanel);
       wordBank.attachInputs(responseView.responseContainers);
@@ -541,7 +547,7 @@ class Core {
     const buttonText = setParameter(
       stimulus.button_text,
       this.button_text,
-      "string",
+      "string"
     );
     const forcedResponse =
       responseViewType === RESPONSE_TYPE.button
@@ -549,7 +555,7 @@ class Core {
         : setParameter(
             stimulus.forced_response,
             this.forced_response,
-            "boolean",
+            "boolean"
           );
     const nextButton = new NextButton(buttonText);
     nextButton.click(() => {
@@ -565,12 +571,12 @@ class Core {
     const showRepeat = setParameter(
       stimulus.show_repeat,
       this.show_repeat,
-      "boolean",
+      "boolean"
     );
     const showRepeatMinimumTime = setParameter(
       stimulus.show_repeat_minimum_time,
       this.show_repeat_minimum_time,
-      "number",
+      "number"
     );
     if (showRepeat && stimulus.audio_file) {
       this.$repeatButton = new RepeatButton(this._data);
@@ -584,7 +590,7 @@ class Core {
     const showIDK = setParameter(
       stimulus.show_i_dont_know,
       this.show_i_dont_know,
-      "boolean",
+      "boolean"
     );
     if (showIDK) {
       const idkButton = new IDKButton(this._data);
@@ -595,24 +601,24 @@ class Core {
     const minimumTime = setParameter(
       stimulus.minimum_time,
       this.minimum_time,
-      "number",
+      "number"
     );
     const maximumTime = setParameter(
       stimulus.maximum_time,
       this.maximum_time,
-      "number",
+      "number"
     );
     const showButton = setParameter(
       stimulus.show_button,
       this.show_button,
-      "boolean",
+      "boolean"
     );
     if (showButton || responseViewType === RESPONSE_TYPE.button) {
       const self = this;
       if (this.trial.maximum_time) {
         setTimeout(
           () => this._endRecall(stimulus, responseView.responseContainers),
-          maximumTime,
+          maximumTime
         );
       }
 
@@ -639,13 +645,13 @@ class Core {
         const progressBar = new ProgressBar(maximumTime);
         this.$progress_container.append(progressBar.get$Element());
         progressBar.done(() =>
-          this._endRecall(stimulus, responseView.responseContainers),
+          this._endRecall(stimulus, responseView.responseContainers)
         );
         progressBar.start();
       } else {
         setTimeout(
           () => this._endRecall(stimulus, responseView.responseContainers),
-          maximumTime,
+          maximumTime
         );
       }
     }
@@ -654,7 +660,7 @@ class Core {
   _endRecall(stimulus, responseContainers) {
     // End data logging
     responseContainers.forEach((responseContainer) =>
-      responseContainer.saveResponse(),
+      responseContainer.saveResponse()
     );
     // responseContainers.forEach(responseContainer => responseContainer.remove())
     this._data.endRecall();
@@ -665,7 +671,7 @@ class Core {
     let correctFeedback = setParameter(
       stimulus.correct_feedback,
       this.correct_feedback,
-      "boolean",
+      "boolean"
     );
     const datablock = this._data.getDataBlocks().pop();
     const showCorrectFeedback =
@@ -678,7 +684,7 @@ class Core {
     let showFeedback = setParameter(
       stimulus.feedback,
       this.feedback,
-      "boolean",
+      "boolean"
     );
     if (showFeedback) {
       const feedbackStimulus = this.buildFeedback(stimulus, datablock);
@@ -689,7 +695,7 @@ class Core {
       ? setParameter(
           stimulus.correct_feedback_time,
           this.correct_feedback_time,
-          "number",
+          "number"
         )
       : 0;
     setTimeout(() => {
@@ -773,7 +779,7 @@ class Core {
     const feedbackHtml = setParameter(
       stimulus.feedback_html,
       this.feedback_html,
-      null,
+      null
     );
     if (feedbackHtml) {
       delete feedbackStimulus.cue_list;
@@ -816,4 +822,4 @@ class Core {
   }
 }
 
-module.exports = Core;
+export default Core;

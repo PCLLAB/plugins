@@ -1,5 +1,7 @@
-const SS = require("string-similarity");
-const SCORING_STRATEGY = require("./constants").SCORING_STRATEGY;
+import $ from "jquery";
+import SS from "string-similarity-js";
+
+import { SCORING_STRATEGY } from "./constants";
 
 class Scorer {
   constructor(strategy, params) {
@@ -28,13 +30,13 @@ class ScoringModel {
   _parseInput(cues, targets) {
     if (typeof cues !== "string" && !Array.isArray(cues)) {
       throw new Error(
-        "Input response is of invalid type " + JSON.stringify(cues),
+        "Input response is of invalid type " + JSON.stringify(cues)
       );
     }
 
     if (typeof targets !== "string" && !Array.isArray(targets)) {
       throw new Error(
-        "Input target is of invalid type " + JSON.stringify(cues),
+        "Input target is of invalid type " + JSON.stringify(cues)
       );
     }
 
@@ -80,14 +82,14 @@ class ScoringModel {
 
           resolve(scores);
         },
-        (err) => reject(err),
+        (err) => reject(err)
       );
     });
   }
 
   kernel(cues, targets) {
     throw new Error(
-      "ScoringModel is an abstract class and should not be called directly",
+      "ScoringModel is an abstract class and should not be called directly"
     );
     return [0];
   }
@@ -98,9 +100,8 @@ class ExactModel extends ScoringModel {
     return new Promise((resolve, reject) => {
       let scores = cues.map((cue, index) =>
         Number(
-          cue.localeCompare(targets[index], "en", { sensitivity: "base" }) ===
-            0,
-        ),
+          cue.localeCompare(targets[index], "en", { sensitivity: "base" }) === 0
+        )
       );
       resolve(scores);
     });
@@ -111,7 +112,7 @@ class DiceModel extends ScoringModel {
   kernel(cues, targets) {
     return new Promise((resolve, reject) => {
       let scores = cues.map((cue, index) =>
-        SS.compareTwoStrings(cue, targets[index]),
+        SS.compareTwoStrings(cue, targets[index])
       );
       resolve(scores);
     });
@@ -187,4 +188,4 @@ class UltronModel extends ScoringModel {
   }
 }
 
-module.exports = Scorer;
+export default Scorer;

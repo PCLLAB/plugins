@@ -1,8 +1,9 @@
-require("../../misc/slider");
-const ResponseContainer = require("./base");
+import $ from "jquery";
+import "../../misc/slider";
+import ResponseContainer from "./base";
 
 // Util
-const setParameter = require("../../../util").setParameter;
+import { setParameter } from "../../../util";
 
 class SliderResponseContainer extends ResponseContainer {
   constructor(generatorInstance, stimulus, dataInstance) {
@@ -17,12 +18,12 @@ class SliderResponseContainer extends ResponseContainer {
     this.labelLeft = setParameter(
       this.stimulus.slider_label_left,
       "",
-      "string",
+      "string"
     );
     this.labelRight = setParameter(
       this.stimulus.slider_label_right,
       "",
-      "string",
+      "string"
     );
 
     this.$sliderContainer = $(`
@@ -53,4 +54,4 @@ class SliderResponseContainer extends ResponseContainer {
   saveResponse() {}
 }
 
-module.exports = SliderResponseContainer;
+export default SliderResponseContainer;

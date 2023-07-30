@@ -1,9 +1,10 @@
-const InputView = require("./inputView");
-const ButtonResponseContainer = require("./containers/button");
-const ButtonHandler = require("../../handlers/buttonHandler");
+import $ from "jquery";
+import InputView from "./inputView";
+import ButtonResponseContainer from "./containers/button";
+import ButtonHandler from "../../handlers/buttonHandler";
 
 // Util
-const setParameter = require("../../util").setParameter;
+import { setParameter } from "../../util";
 
 class ButtonView extends InputView {
   newResponseContainer(buttonLabel) {
@@ -11,7 +12,7 @@ class ButtonView extends InputView {
       this,
       buttonLabel,
       this.stimulus,
-      this.dataInstance,
+      this.dataInstance
     );
     this.responseContainers.push(rc);
     ++this.numResponseContainers;
@@ -25,12 +26,12 @@ class ButtonView extends InputView {
     const showRepeat = setParameter(
       this.stimulus.show_repeat,
       this.coreInstance.show_repeat,
-      "boolean",
+      "boolean"
     );
     const response_columns = setParameter(
       this.stimulus.response_columns,
       this.coreInstance.response_columns,
-      "number",
+      "number"
     );
 
     let indexOffset = Number(showRepeat);
@@ -85,4 +86,4 @@ class ButtonView extends InputView {
   }
 }
 
-module.exports = ButtonView;
+export default ButtonView;

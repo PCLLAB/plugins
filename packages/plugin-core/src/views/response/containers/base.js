@@ -1,10 +1,10 @@
 // Util
-const UUID4 = require("uuid4");
+import { v4 as uuidv4 } from "uuid";
 
 /* Response container interface */
 class ResponseContainer {
   constructor() {
-    this._id = UUID4();
+    this._id = uuidv4();
   }
 
   get$() {}
@@ -13,4 +13,4 @@ class ResponseContainer {
   remove() {}
 }
 
-module.exports = ResponseContainer;
+export default ResponseContainer;

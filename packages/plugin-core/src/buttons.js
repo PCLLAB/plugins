@@ -1,5 +1,6 @@
-const getButtonColorClass = require("./constants").getButtonColorClass;
-class NextButton {
+import $ from "jquery";
+import { getButtonColorClass } from "./constants";
+export class NextButton {
   constructor(text) {
     const buttonText = text || "Next";
 
@@ -10,9 +11,7 @@ class NextButton {
   }
 }
 
-module.exports.NextButton = NextButton;
-
-class IDKButton {
+export class IDKButton {
   constructor(dataInstance) {
     this._data = dataInstance;
 
@@ -40,9 +39,7 @@ class IDKButton {
   }
 }
 
-module.exports.IDKButton = IDKButton;
-
-class RepeatButton {
+export class RepeatButton {
   constructor(dataInstance) {
     this._data = dataInstance;
 
@@ -63,5 +60,3 @@ class RepeatButton {
     };
   }
 }
-
-module.exports.RepeatButton = RepeatButton;

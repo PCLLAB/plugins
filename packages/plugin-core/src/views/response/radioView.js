@@ -1,11 +1,9 @@
-const InputView = require("./inputView");
-const RadioResponseContainer = require("./containers/radio");
-
-// Util
-const setParameter = require("../../util").setParameter;
+import $ from "jquery";
+import InputView from "./inputView";
+import RadioResponseContainer from "./containers/radio";
 
 // Handler
-const RadioHandler = require("../../handlers/radioHandler");
+import RadioHandler from "../../handlers/radioHandler";
 
 class RadioView extends InputView {
   constructor($displayElement, coreInstance, dataInstance, stimulus) {
@@ -16,7 +14,7 @@ class RadioView extends InputView {
     const rc = new RadioResponseContainer(
       this,
       this.stimulus,
-      this.dataInstance,
+      this.dataInstance
     );
     this.responseContainers.push(rc);
     ++this.numResponseContainers;
@@ -52,4 +50,4 @@ class RadioView extends InputView {
   }
 }
 
-module.exports = RadioView;
+export default RadioView;

@@ -1,4 +1,5 @@
-const RecallStandardView = require("./standardView");
+import $ from "jquery";
+import RecallStandardView from "./standardView";
 
 class RecallHorizontalView extends RecallStandardView {
   renderCueList($element) {
@@ -15,4 +16,4 @@ class RecallHorizontalView extends RecallStandardView {
   }
 }
 
-module.exports = RecallHorizontalView;
+export default RecallHorizontalView;

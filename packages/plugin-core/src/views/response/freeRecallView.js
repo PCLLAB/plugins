@@ -1,9 +1,7 @@
-const InputView = require("./inputView");
-const FreeRecallResponseContainer = require("./containers/freeRecall");
-const FreeRecallHandler = require("../../handlers/freeRecallHandler");
-
-// Util
-const setParameter = require("../../util").setParameter;
+import $ from "jquery";
+import InputView from "./inputView";
+import FreeRecallResponseContainer from "./containers/freeRecall";
+import FreeRecallHandler from "../../handlers/freeRecallHandler";
 
 class FreeRecallView extends InputView {
   constructor($displayElement, coreInstance, dataInstance, stimulus) {
@@ -15,7 +13,7 @@ class FreeRecallView extends InputView {
     const rc = new FreeRecallResponseContainer(
       this,
       this.stimulus,
-      this.dataInstance,
+      this.dataInstance
     );
     this.responseContainers.push(rc);
     ++this.numResponseContainers;
@@ -44,4 +42,4 @@ class FreeRecallView extends InputView {
   }
 }
 
-module.exports = FreeRecallView;
+export default FreeRecallView;

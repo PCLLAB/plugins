@@ -1,7 +1,8 @@
-const HoneypotResponseContainer = require("../response/containers/honeypot");
-const setParameter = require("../../util").setParameter;
-const CUE_ALIGNMENT = require("../../constants").CUE_ALIGNMENT;
-const dragula = require("dragula");
+import $ from "jquery";
+import dragula from "dragula";
+import HoneypotResponseContainer from "../response/containers/honeypot";
+import { setParameter } from "../../util";
+import { CUE_ALIGNMENT } from "../../constants";
 
 class RecallWordBankView {
   constructor(stimulus, alignment) {
@@ -71,4 +72,4 @@ class RecallWordBankView {
   }
 }
 
-module.exports = RecallWordBankView;
+export default RecallWordBankView;

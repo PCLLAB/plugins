@@ -1,4 +1,5 @@
-module.exports.setParameter = (value, defaultValue, expectedType) => {
+import $ from "jquery";
+export const setParameter = (value, defaultValue, expectedType) => {
   if (typeof value === "function" && typeof value !== expectedType) {
     value = value();
   }
@@ -14,11 +15,11 @@ module.exports.setParameter = (value, defaultValue, expectedType) => {
   return defaultValue;
 };
 
-module.exports.setParameterFromConstants = (
+export const setParameterFromConstants = (
   value,
   constants,
   defaultValue,
-  expectedType,
+  expectedType
 ) => {
   if (typeof value === "function" && typeof value !== expectedType) {
     value = value();
@@ -52,7 +53,7 @@ module.exports.setParameterFromConstants = (
   throw new Error(String(value) + "is not a valid parameter");
 };
 
-module.exports.$hide = (coreInstance, $el) => {
+export const $hide = (coreInstance, $el) => {
   $el.addClass("notransition");
   if (coreInstance.progress_total_time) {
     $el.css("visibility", "hidden");
@@ -61,7 +62,7 @@ module.exports.$hide = (coreInstance, $el) => {
   }
 };
 
-module.exports.$show = (coreInstance, $el) => {
+export const $show = (coreInstance, $el) => {
   $el[0].offsetHeight;
   $el.removeClass("notransition");
   if (coreInstance.progress_total_time) {
@@ -71,7 +72,7 @@ module.exports.$show = (coreInstance, $el) => {
   }
 };
 
-module.exports.$disableSelect = ($el) => {
+export const $disableSelect = ($el) => {
   if (!$el) {
     return;
   }
@@ -85,15 +86,15 @@ module.exports.$disableSelect = ($el) => {
     .css("user-select", "none");
 };
 
-module.exports.evaluateFunctionParameters = (trial) => {
+export const evaluateFunctionParameters = (trial) => {
   // save hooks
-  hookNames = [
+  const hookNames = [
     "on_stimulus_start",
     "on_stimulus_end",
     "done_callback",
     "feedback_html",
   ];
-  hooks = [];
+  const hooks = [];
 
   hookNames.forEach((hook) => hooks.push(trial[hook]));
 
@@ -101,34 +102,33 @@ module.exports.evaluateFunctionParameters = (trial) => {
   hookNames.forEach((hook) => {
     delete trial[hook];
   });
-  let _trial = jsPsych.pluginAPI.evaluateFunctionParameters(trial);
 
   // restore hooks
   hookNames.forEach((hook, index) => {
-    _trial[hook] = hooks[index];
+    trial[hook] = hooks[index];
   });
 
-  return _trial;
+  return trial;
 };
 
-intervals = [];
-module.exports.setInterval = (callback, time) => {
+const intervals = [];
+export const setInterval = (callback, time) => {
   const id = setInterval(callback, time);
   intervals.push(id);
 };
 
-timeouts = [];
-module.exports.setTimeout = (callback, time) => {
-  const id = setTimeout(callback, time);
+const timeouts = [];
+export const setTimeout = (callback, time) => {
+  const id = window.setTimeout(callback, time);
   timeouts.push(id);
 };
 
-module.exports.clearAllTimers = () => {
+export const clearAllTimers = () => {
   intervals.forEach((id) => clearInterval(id));
   timeouts.forEach((id) => clearTimeout(id));
 };
 
-module.exports.compareResponse = (response, target) => {
+export const compareResponse = (response, target) => {
   if (typeof response === "string" && typeof target === "string") {
     return response.toLowerCase() === target.toLowerCase();
   }
