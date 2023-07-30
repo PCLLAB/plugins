@@ -1,0 +1,42 @@
+{
+  "name": "@pcllab/plugin-core",
+  "version": "0.1.0",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "unpkg": "dist/index.global.js",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "buildPackage": "tsup src/index.ts --format esm,cjs --dts",
+    "buildBrowser": "tsup src/index.ts --format iife --minify",
+    "build": "pnpm buildPackage && pnpm buildBrowser",
+    "dev": "pnpm buildPackage --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PCLLAB/plugins.git",
+    "directory": "packages/plugin-core"
+  },
+  "bugs": {
+    "url": "https://github.com/PCLLAB/plugins/issues"
+  },
+  "homepage": "https://github.com/PCLLAB/plugins/tree/main/packages/plugin-core#readme",
+  "devDependencies": {
+    "config": "workspace:*",
+    "tsconfig": "workspace:*",
+    "tsup": "^7.1.0"
+  },
+  "dependencies": {
+    "jspsych": "^7.3.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
